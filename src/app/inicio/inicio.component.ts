@@ -11,7 +11,7 @@ export class InicioComponent {
 
   materias = ['Español', 'Matemáticas', 'Ciencias','Historia', 'Geografía', 'Inglés'];
 
-  selectedTheme = 'pink';
+  selectedTheme = 'dark';
   changeTheme(event: Event){
     this.selectedTheme = (event.target as HTMLSelectElement).value;
   }

@@ -13,9 +13,19 @@ module.exports = {
         },
         secondary: {
           light: '#1430CC',
-          dark: '#1A1A1A',
+          dark: '#818181',
           pink: '#FFDFEE',
         },
+        background: {
+          light: '#FFFFFF',
+          dark: '#1B1B1B',
+          pink: '#FFFFFF'
+        },
+        darkBackground: {
+          light: '#FFFFFF',
+          dark: '#9A9A9A',
+          pink: '#FFFFFF'
+        }
       },
       keyframes: {
         shrink: {
@@ -32,7 +42,7 @@ module.exports = {
   plugins: [],
   safelist: [
     {
-      pattern: /(bg|text|border)-(primary|secondary)-(light|dark|pink)/,
+      pattern: /(bg|text|border)-(primary|secondary|background|darkBackground)-(light|dark|pink)/,
     },
   ]
 }
