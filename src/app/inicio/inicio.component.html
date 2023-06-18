@@ -1,0 +1,31 @@
+<body class="flex flex-col h-screen">
+    <header class="sticky z-10 top-0 w-full h-16 m-0 flex flex-none items-center justify-between bg-lightBackground-{{selectedTheme}} sm:h-20">
+        <h1 class="mx-2 text-white font-bold text-2xl sm:text-3xl">
+            Lista de materias
+        </h1>
+
+        <button class="h-8 w-8 text-xl relative text-textColor-{{selectedTheme}} font-bold flex justify-center items-center rounded-full border border-solid border-pink-100 mx-4 sm:h-10 sm:w-10 sm:text-3xl active:bg-white active:text-sky-200 active:animate-shrink">
+            <p class="absolute top-[-1px]">
+                &plus;
+            </p>
+        </button>
+        
+
+        <!-- <div class="px-4">
+            <select id="theme-select" class="focus:outline-none" (change)="changeTheme($event)">
+              <option value="light">Light Theme</option>
+              <option value="dark">Dark Theme</option>
+              <option value="pink">Pink Theme</option>
+            </select>
+        </div> -->
+
+    </header>
+    
+    <div class="flex flex-grow flex-col mt-3">
+        <div class="h-16 mx-1 my-1 border border-solid flex items-center justify-center rounded-3xl" style="border-color: {{materia.color}};" *ngFor="let materia of materias">
+            <h1 class="text-xl">
+                {{ materia.nombre }} 
+            </h1>
+        </div>
+    </div>    
+</body>
