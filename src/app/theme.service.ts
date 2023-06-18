@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemeService {
-  private currentTheme = 'light-theme';
 
   getCurrentTheme(): string {
-    return this.currentTheme;
+    let theme = localStorage.getItem('theme');
+    return theme?theme:'light';
   }
 
-  setTheme(theme: string): void {
-    this.currentTheme = theme;
+  setTheme(selectedTheme: string): void {
+    localStorage.setItem('theme', selectedTheme);
   }
 }

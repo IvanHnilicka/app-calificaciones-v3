@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../theme.service';
 
 @Component({
@@ -6,12 +6,15 @@ import { ThemeService } from '../theme.service';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
-export class InicioComponent {
-  constructor(public theme:ThemeService){}
+export class InicioComponent implements OnInit {
+  constructor(public theme:ThemeService){ }
+  selectedTheme:string = '';
+
+  ngOnInit(): void {
+    this.selectedTheme = this.theme.getCurrentTheme();
+  }
 
   materias = ['Español', 'Matemáticas', 'Ciencias','Historia', 'Geografía', 'Inglés'];
-
-  selectedTheme = 'dark';
   changeTheme(event: Event){
     this.selectedTheme = (event.target as HTMLSelectElement).value;
   }
