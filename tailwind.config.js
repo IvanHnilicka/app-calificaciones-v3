@@ -6,26 +6,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkBackground: {
+        primary: {
+          light: '#7A96FF',
+          dark: '#343434',
+          pink: '#F5C5D4',
+        },
+        secondary: {
           light: '#1430CC',
           dark: '#1A1A1A',
-          pink: '#ff2491',
-        },
-        lightBackground: {
-          light: '#4763ff',
-          dark: '#343434',
-          pink: '#FFBDFF',
-        },
-        textColor: {
-          light: '#010101',
-          dark: '#FFFFFF',
-          pink: '#FFFFFF'
+          pink: '#FFDFEE',
         },
       },
       keyframes: {
         shrink: {
           '0%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(0.95)' },
+          '50%': { transform: 'scale(0.92)' },
           '100%': { transform: 'scale(1)' },
         }
       },
@@ -37,9 +32,8 @@ module.exports = {
   plugins: [],
   safelist: [
     {
-      pattern: 
-        /(bg|text|border)-(darkBackground-light|darkBackground-dark|darkBackground-pink|lightBackground-light|lightBackground-dark|lightBackground-pink|textColor-light|textColor-dark|textColor-pink)/,
-    }
+      pattern: /(bg|text|border)-(primary|secondary)-(light|dark|pink)/,
+    },
   ]
 }
 
