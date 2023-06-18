@@ -4,15 +4,21 @@
             Lista de materias
         </h1>
 
-        <button class="h-8 w-8 relative flex items-center justify-center rounded-full border border-solid text-2xl text-white border-white mx-4 sm:h-10 sm:w-10  active:bg-white active:animate-shrink">
-            <img src="../../assets/add-outline.svg" alt="Agregar">
-        </button>
+        <div class="flex mx-2">
+            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full border border-solid text-2xl text-white border-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink" routerLink="/agregar">
+                <img src="../../assets/add-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
+            </button>
+            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full border border-solid text-2xl text-white border-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink">
+                <img src="../../assets/settings-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
+            </button>
+        </div>
+        
     </header>
     
     <div class="my-3 mx-2 flex flex-grow flex-col items-center">
-        <div class="h-16 w-full max-w-3xl mx-4 my-1 bg-darkBackground-{{selectedTheme}} border border-solid border-primary-{{selectedTheme}} flex items-center justify-center rounded-3xl cursor-pointer active:animate-shrink sm:h-20" *ngFor="let materia of materias">
+        <div class="h-16 w-full max-w-3xl mx-4 my-1 bg-darkBackground-{{selectedTheme}} border border-solid border-primary-{{selectedTheme}} flex items-center justify-center rounded-3xl cursor-pointer active:animate-shrink sm:h-20 sm:w-5/6" *ngFor="let materia of materias">
             <h1 class="text-xl sm:text-2xl">
-                {{ materia }} 
+                {{ materia }}
             </h1>
         </div>
     </div>  
