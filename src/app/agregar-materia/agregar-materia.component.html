@@ -11,20 +11,21 @@
             </button>
         </div>        
     </header>
-
-    <div class="flex flex-col mx-3 my-3">
+    
+    <!-- Contenido principal -->
+    <div class="flex flex-col mx-3 my-3 animate-show">
         <!-- Nombre de materia -->
         <div class="w-full mb-3 flex items-center">
             <label for="nombre-materia" class="mr-8 w-fit text-textColor-{{selectedTheme}} sm:text-xl">Nombre: </label>
-            <input id="nombre-materia" type="text" class="w-full px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:sm:text-xl" placeholder="Ej. Español" [(ngModel)]="nuevaMateria.nombre">
+            <input id="nombre-materia" type="text" class="w-full px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:sm:text-xl" placeholder="Ej. Español" [(ngModel)]="nuevaMateria.nombre" (change)="mensajeError = ''">
         </div>
 
         <!-- Evaluaciones -->
-        <div class="w-full mb-3 flex items-center" *ngFor="let evaluacion of nuevaMateria.evaluaciones; index as i">
+        <div class="w-full mb-3 flex items-center animate-show" *ngFor="let evaluacion of nuevaMateria.evaluaciones; index as i">
             <label for="nombre-evaluacion" class="mr-4 w-fit text-textColor-{{selectedTheme}} sm:text-xl sm:mr-3">Evaluacion: </label>
-            <input id="nombre-evaluacion" type="text" class="w-full mr-1 px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:text-xl lg:mr-4" placeholder="Ej. Examen" [(ngModel)]="evaluacion.nombre">
+            <input id="nombre-evaluacion" type="text" class="w-full mr-1 px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:text-xl lg:mr-4" placeholder="Ej. Examen" [(ngModel)]="evaluacion.nombre" (change)="mensajeError = ''">
             <label for="valor-evaluacion" class="text-textColor-{{selectedTheme}} mx-2 sm:text-xl">Valor: </label>
-            <input id="valor-evaluacion" type="number" class="w-12 pl-2 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-14 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor">
+            <input id="valor-evaluacion" type="number" class="w-12 pl-2 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-14 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor" (change)="mensajeError = ''">
 
             <button class="w-20 h-2/3 ml-2 rounded-full flex items-center justify-center sm:w-16 active:animate-shrink">
                 <p class="text-xl text-red-600 font-bold font-mono sm:text-3xl" *ngIf="i > 0" (click)="eliminarEvaluacion(i)">x</p>
@@ -39,6 +40,10 @@
             <button class="w-full h-10 my-2 text-white font-semibold bg-primary-{{selectedTheme}} rounded-full sm:w-1/2 sm:mx-2 sm:text-lg lg:w-1/3 lg:text-xl active:animate-shrink" (click)="guardarNuevaMateria()">
                 Guardar
             </button>
+        </div>        
+
+        <div class="w-full mt-5 text-center text-red-600 text-md font-semibold">
+            <p>{{mensajeError}}</p>
         </div>
     </div>
 </body>

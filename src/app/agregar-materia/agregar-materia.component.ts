@@ -21,6 +21,7 @@ export class AgregarMateriaComponent implements OnInit{
   materias: Materia[] = [];
   selectedTheme:string = '';
   materiaGuardada = false;
+  mensajeError = '';
 
   nuevaMateria: Materia = {
     nombre: '',
@@ -50,6 +51,7 @@ export class AgregarMateriaComponent implements OnInit{
   guardarNuevaMateria(): void {
     if(!this.nuevaMateria.nombre){
       this.materiaGuardada = false;
+      this.mensajeError = 'Error. Ingrese nombre de materia';
       console.log('Error. Ingrese nombre de materia');  
       return;
     }
@@ -59,6 +61,7 @@ export class AgregarMateriaComponent implements OnInit{
     for(let i = 0; i < evaluaciones.length; i++){
       if(!evaluaciones[i].nombre){
         this.materiaGuardada = false;
+        this.mensajeError = 'Error. Ingrese un nombre en la evaluacion ' + (i + 1);
         console.log('Error. Ingrese un nombre en la evaluacion ', (i + 1));
         return;
       }
@@ -68,6 +71,7 @@ export class AgregarMateriaComponent implements OnInit{
 
     if(suma != 100){
       this.materiaGuardada = false;
+      this.mensajeError = 'Error. Verifique que la suma de valores sea de 100%';
       console.log('Error. Verifique que la suma de valores sea de 100%');  
       return    
     }

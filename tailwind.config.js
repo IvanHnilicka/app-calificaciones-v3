@@ -32,10 +32,15 @@ module.exports = {
           '0%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(0.95)' },
           '100%': { transform: 'scale(1)' },
+        },
+        show: {
+          '0%': { opacity: '0%' },
+          '100%': { opacity: '100%' },
         }
       },
       animation: {
-        shrink: 'shrink 0.1s'
+        shrink: 'shrink 0.1s',
+        show: 'show 1s',
       }
     },
   },
