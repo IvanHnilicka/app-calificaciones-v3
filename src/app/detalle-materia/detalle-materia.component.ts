@@ -48,6 +48,14 @@ export class DetalleMateriaComponent implements OnInit {
     return (suma / evaluaciones.length).toFixed(2);
   }
 
+  validarInput(index:number): void{
+    let calificacion = this.datosMateria.evaluaciones[index].calificacion;
+
+    if(!calificacion || calificacion < 0 || calificacion > 100){
+      this.datosMateria.evaluaciones[index].calificacion = 0;
+    }
+  }
+
   guardarCalificaciones(): void {
     this.materias[this.index] = this.datosMateria;
     this.ls.guardarMaterias(this.materias);
