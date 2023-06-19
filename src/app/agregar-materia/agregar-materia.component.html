@@ -1,11 +1,11 @@
 <body class="h-screen flex flex-col bg-background-{{selectedTheme}} overflow-scroll">
     <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center justify-between bg-primary-{{selectedTheme}} sm:h-20">
-        <h1 class="mx-2 text-white font-bold text-2xl sm:text-3xl">
+        <h1 class="mx-2 text-white font-bold text-2xl sm:text-3xl md:mx-8">
             Agregar materia
         </h1>
 
         <!-- Botón regresar -->
-        <div class="flex mx-2">
+        <div class="flex mx-2 md:mx-8">
             <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full border border-solid text-2xl text-white border-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink" routerLink="/inicio">
                 <img src="../../assets/return-down-back-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
             </button>
@@ -13,7 +13,7 @@
     </header>
     
     <!-- Contenido principal -->
-    <div class="flex flex-col mx-3 my-3 animate-load">
+    <div class="flex flex-col mx-3 my-3 animate-load md:mx-8">
         <!-- Nombre de materia -->
         <div class="w-full mb-3 flex items-center">
             <label for="nombre-materia" class="mr-8 w-fit text-textColor-{{selectedTheme}} sm:text-xl">Nombre: </label>
@@ -44,6 +44,20 @@
 
         <div class="w-full mt-5 text-center text-red-600 text-md font-semibold">
             <p>{{mensajeError}}</p>
+        </div>
+
+        <!-- Modal -->
+        <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="materiaGuardada">
+            <!-- Contenido modal -->
+            <div class="w-fit h-fit px-16 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float">
+                <h1 class="mb-6 text-white text-xl">
+                    Materia agregada
+                </h1>
+
+                <button class="px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm" routerLink="/inicio">
+                    Regresar
+                </button>
+            </div>
         </div>
     </div>
 </body>

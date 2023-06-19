@@ -47,11 +47,16 @@ module.exports = {
           '0%': { opacity: '0%' },
           '100%': { opacity: '100%' },
         },
+        float: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0%)' },
+        }
       },
       animation: {
         shrink: 'shrink 0.1s',
         show: 'show 1s',
         load: 'show 0.5s',
+        float: 'float 0.75s',
       },
     },
   },
