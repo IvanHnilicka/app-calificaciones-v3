@@ -18,7 +18,7 @@
     <div class="my-3 mx-2 flex flex-grow flex-col items-center">
         <div class="h-16 w-full max-w-3xl mx-4 my-1 bg-darkBackground-{{selectedTheme}} border border-solid border-primary-{{selectedTheme}} flex items-center justify-center rounded-3xl cursor-pointer active:animate-shrink sm:h-20 sm:w-5/6" *ngFor="let materia of materias">
             <h1 class="text-xl sm:text-2xl">
-                {{ materia }}
+                {{ materia.nombre }}
             </h1>
         </div>
     </div>  

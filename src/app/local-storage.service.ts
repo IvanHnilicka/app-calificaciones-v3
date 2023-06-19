@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Materia } from './materia.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -6,13 +7,13 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
 
   constructor() { }
-
-  getCurrentTheme(): string{
-    let selectedTheme = localStorage.getItem('theme');
-    return selectedTheme?selectedTheme:'light';
+  
+  guardarMaterias(datos: Materia[]){
+    localStorage.setItem('materias', JSON.stringify(datos));
   }
 
-  changeTheme(theme: string): void{
-    localStorage.setItem('theme', theme);
+  getMaterias(){
+    let materias = localStorage.getItem('materias');
+    return materias?JSON.parse(materias):[];
   }
 }
