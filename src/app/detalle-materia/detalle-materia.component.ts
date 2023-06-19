@@ -42,7 +42,7 @@ export class DetalleMateriaComponent implements OnInit {
     let promedio = 0;
     let evaluaciones = this.datosMateria.evaluaciones;
     for(let i = 0; i < evaluaciones.length; i++){
-      promedio += evaluaciones[i].calificacion * evaluaciones[i].valor / 100;
+      promedio += Number((evaluaciones[i].calificacion * evaluaciones[i].valor / 100).toFixed(2));
     }    
 
     return promedio.toFixed(2);
