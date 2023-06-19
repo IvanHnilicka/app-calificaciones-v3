@@ -49,12 +49,12 @@
         <!-- Modal -->
         <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="materiaGuardada">
             <!-- Contenido modal -->
-            <div class="w-fit h-fit px-16 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float">
+            <div class="w-fit h-fit mx-4 px-8 py-4 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float">
                 <h1 class="mb-6 text-white text-xl">
-                    Materia agregada
+                    La materia ha sido agregada
                 </h1>
 
-                <button class="px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm" routerLink="/inicio">
+                <button class="w-24 px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm active:animate-shrink" routerLink="/inicio">
                     Regresar
                 </button>
             </div>

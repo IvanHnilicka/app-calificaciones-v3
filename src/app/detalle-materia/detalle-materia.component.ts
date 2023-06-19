@@ -30,9 +30,9 @@ export class DetalleMateriaComponent implements OnInit {
 
   index: number = -1;
   materias: Materia[] = [];
-  materiaGuardada = true;
-  mensajeError = '';
-  selectedTheme = '';
+  materiaGuardada: boolean = true;
+  mensajeError: string = '';
+  selectedTheme: string = '';
 
   calcularPuntos(calificacion: number, valor: number): string{
     return (calificacion * valor / 100).toFixed(2);

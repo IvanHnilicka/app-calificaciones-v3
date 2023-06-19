@@ -8,6 +8,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { AgregarMateriaComponent } from './agregar-materia/agregar-materia.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { DetalleMateriaComponent } from './detalle-materia/detalle-materia.component';
+import { EditarMateriaComponent } from './editar-materia/editar-materia.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DetalleMateriaComponent } from './detalle-materia/detalle-materia.compo
     InicioComponent,
     AgregarMateriaComponent,
     AjustesComponent,
-    DetalleMateriaComponent
+    DetalleMateriaComponent,
+    EditarMateriaComponent
   ],
   imports: [
     BrowserModule,

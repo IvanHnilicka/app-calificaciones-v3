@@ -48,7 +48,7 @@ module.exports = {
           '100%': { opacity: '100%' },
         },
         float: {
-          '0%': { transform: 'translateY(100%)' },
+          '0%': { transform: 'translateY(50%)' },
           '100%': { transform: 'translateY(0%)' },
         }
       },
