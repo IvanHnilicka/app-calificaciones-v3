@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ThemeService } from '../theme.service';
+import { LocalStorageService } from '../local-storage.service';
 
 @Component({
   selector: 'app-ajustes',
@@ -8,8 +9,7 @@ import { ThemeService } from '../theme.service';
   styleUrls: ['./ajustes.component.css']
 })
 export class AjustesComponent implements OnInit{  
-  constructor(public theme:ThemeService){ }
-  selectedTheme:string = '';
+  constructor(private theme:ThemeService, private ls:LocalStorageService){ }
   
   ngOnInit(): void {
     try{
@@ -27,5 +27,17 @@ export class AjustesComponent implements OnInit{
         this.theme.setTheme(this.selectedTheme);
       })
     });
+  }
+
+  selectedTheme:string = 'light';
+  modalConfirmacion: boolean = false;
+  modalEliminadas: boolean = false;
+
+  borrarMaterias(): void{
+    try{
+      this.ls.guardarMaterias([]);
+    }catch(error){
+      console.log('Error. ', error);      
+    }
   }
 }

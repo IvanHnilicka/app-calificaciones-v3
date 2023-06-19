@@ -31,8 +31,42 @@
     </div>
 
     <div class="flex h-full justify-center">
-        <button class="h-10 w-52 max-w-2xl mx-4 my-10 text-xl text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full self-end lg:h-16 lg:w-64 lg:text-3xl active:animate-shrink">
+        <button class="h-10 w-52 max-w-2xl mx-4 my-10 text-xl text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full self-end lg:h-16 lg:w-64 lg:text-3xl active:animate-shrink" (click)="modalConfirmacion = true">
             Borrar materias
         </button>
+    </div>
+
+
+    <!-- Modal confirmar eliminación -->
+    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalConfirmacion">
+        <!-- Contenido modal -->
+        <div class="w-fit h-fit mx-4 px-8 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
+            <h1 class="w-fit mb-6 text-white text-xl lg:text-2xl">
+                ¿Deseas eliminar todas las materias?
+            </h1>
+
+            <button class="w-24 px-3 py-1 mx-2 text-sm text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="borrarMaterias(); modalConfirmacion = false; modalEliminadas = true;">
+                Confirmar
+            </button>
+
+            <button class="w-24 px-3 py-1 mx-2 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="modalConfirmacion = false">
+                Cancelar
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Modal materia eliminada -->
+    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalEliminadas">
+        <!-- Contenido modal -->
+        <div class="w-fit h-fit mx-4 px-8 py-4 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
+            <h1 class="w-fit mb-6 text-white text-xl lg:text-2xl">
+                Las materias han sido eliminadas
+            </h1>
+
+            <button class="w-24 px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" routerLink="/inicio">
+                Regresar
+            </button>
+        </div>
     </div>
 </body>
