@@ -10,13 +10,17 @@ import { Materia } from '../materia.interface';
 })
 export class InicioComponent implements OnInit {
   constructor(public theme:ThemeService, private ls: LocalStorageService){ }
-  selectedTheme:string = '';
 
   ngOnInit(): void {
-    this.selectedTheme = this.theme.getCurrentTheme();
-    this.materias = this.ls.getMaterias();
+    try{
+      this.selectedTheme = this.theme.getCurrentTheme();
+      this.materias = this.ls.getMaterias();
+    }catch(error){
+      console.log('Error. ', error);
+    }
   }
 
+  selectedTheme:string = 'light';
   materias: Materia[] = [];
 
   changeTheme(event: Event){

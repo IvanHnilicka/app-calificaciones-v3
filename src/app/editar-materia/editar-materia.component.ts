@@ -14,13 +14,18 @@ export class EditarMateriaComponent implements OnInit {
   constructor(private theme: ThemeService, private ls: LocalStorageService, private router: ActivatedRoute) {}
   
   ngOnInit(): void {
-    this.selectedTheme = this.theme.getCurrentTheme();
-    this.materias = this.ls.getMaterias();
-    this.router.params.subscribe(params => {
-      this.index = params['index'];
-    });
-
-    this.datosMateria = this.materias[this.index];
+    try{
+      this.selectedTheme = this.theme.getCurrentTheme();
+      this.materias = this.ls.getMaterias();      
+      this.router.params.subscribe(params => {
+        this.index = params['index'];
+      });
+      
+      this.datosMateria = this.materias[this.index];
+      
+    }catch(error){ 
+      console.log('Error. ', error);      
+    }
   }
 
   datosMateria: Materia = {
@@ -32,10 +37,9 @@ export class EditarMateriaComponent implements OnInit {
   modalConfirmacion = false;
   modalEliminada = false;
   materias: Materia[] = [];
-  materiaEliminada = false;
   materiaGuardada: boolean = false;
   mensajeError: string = '';
-  selectedTheme: string = '';
+  selectedTheme: string = 'light';
 
   agregarEvaluacion(): void {
     let evaluacion: Evaluacion = {
@@ -55,7 +59,6 @@ export class EditarMateriaComponent implements OnInit {
     if(!this.datosMateria.nombre){
       this.materiaGuardada = false;
       this.mensajeError = 'Error. Ingrese nombre de materia';
-      console.log('Error. Ingrese nombre de materia');  
       return;
     }
     
@@ -65,7 +68,12 @@ export class EditarMateriaComponent implements OnInit {
       if(!evaluaciones[i].nombre){
         this.materiaGuardada = false;
         this.mensajeError = 'Error. Ingrese un nombre en la evaluacion ' + (i + 1);
-        console.log('Error. Ingrese un nombre en la evaluacion ', (i + 1));
+        return;
+      }
+
+      if(evaluaciones[i].valor <= 0){
+        this.materiaGuardada = false;
+        this.mensajeError = 'Error. Valor no puede ser ' + evaluaciones[i].valor + ' en ' + evaluaciones[i].nombre;
         return;
       }
 
@@ -92,7 +100,11 @@ export class EditarMateriaComponent implements OnInit {
     const btnEliminar = document.getElementById('btn-eliminar');
     (btnEliminar as HTMLButtonElement).style.display = 'none';
 
-    this.materias.splice(this.index, 1);
-    this.ls.guardarMaterias(this.materias);
+    try{
+      this.materias.splice(this.index, 1);
+      this.ls.guardarMaterias(this.materias);
+    }catch(error){
+      console.log('Error. ', error);
+    }      
   }
 }

@@ -46,51 +46,55 @@
             </button>
         </div>        
 
+        <!-- Mensaje error en input -->
         <div class="w-full mt-5 text-center text-red-600 text-md font-semibold">
             <p>{{mensajeError}}</p>
         </div>
 
+
         <!-- Modal materia guardada -->
         <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="materiaGuardada" (click)="materiaGuardada = false">
             <!-- Contenido modal -->
-            <div class="w-fit h-fit mx-4 px-10 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float">
-                <h1 class="w-fit mb-6 text-white text-xl">
+            <div class="w-fit h-fit mx-4 px-10 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
+                <h1 class="w-fit mb-6 text-white text-xl lg:text-2xl">
                     La materia ha sido editada
                 </h1>
     
-                <button class="w-24 px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm active:animate-shrink" routerLink="/inicio">
+                <button class="w-24 px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" routerLink="/inicio">
                     Regresar
                 </button>
             </div>
         </div>
         
+
         <!-- Modal confirmar eliminación -->
         <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalConfirmacion">
             <!-- Contenido modal -->
-            <div class="w-fit h-fit mx-4 px-8 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float">
-                <h1 class="w-fit mb-6 text-white text-xl">
+            <div class="w-fit h-fit mx-4 px-8 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
+                <h1 class="w-fit mb-6 text-white text-xl lg:text-2xl">
                     ¿Deseas eliminar la materia?
                 </h1>
 
-                <button class="w-24 px-3 py-1 mx-2 text-sm text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full active:animate-shrink" (click)="eliminarMateria(); modalConfirmacion = false; modalEliminada = true;">
+                <button class="w-24 px-3 py-1 mx-2 text-sm text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="eliminarMateria(); modalConfirmacion = false; modalEliminada = true;">
                     Confirmar
                 </button>
     
-                <button class="w-24 px-3 py-1 mx-2 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm active:animate-shrink" (click)="modalConfirmacion = false">
+                <button class="w-24 px-3 py-1 mx-2 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="modalConfirmacion = false">
                     Cancelar
                 </button>
             </div>
         </div>
 
+
         <!-- Modal materia eliminada -->
         <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalEliminada">
             <!-- Contenido modal -->
-            <div class="w-fit h-fit mx-4 px-10 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float">
-                <h1 class="w-fit mb-6 text-white text-xl">
+            <div class="w-fit h-fit mx-4 px-8 py-4 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
+                <h1 class="w-fit mb-6 text-white text-xl lg:text-2xl">
                     La materia ha sido eliminada
                 </h1>
     
-                <button class="w-24 px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm active:animate-shrink" routerLink="/inicio">
+                <button class="w-24 px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" routerLink="/inicio">
                     Regresar
                 </button>
             </div>

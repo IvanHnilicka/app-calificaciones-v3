@@ -12,15 +12,20 @@ export class AjustesComponent implements OnInit{
   selectedTheme:string = '';
   
   ngOnInit(): void {
-    this.selectedTheme = this.theme.getCurrentTheme();
+    try{
+      this.selectedTheme = this.theme.getCurrentTheme();
+    }catch(error){
+      console.log('Error. ', error);
+      this.selectedTheme = 'light';
+    }
 
-    const themeMenu = document.getElementById('theme-select');
-    (themeMenu as HTMLSelectElement).value = this.selectedTheme;
-  }
-
-  changeTheme(e: Event){
-    let newTheme = (e.target as HTMLSelectElement).value;
-    this.theme.setTheme(newTheme);
-    this.selectedTheme = newTheme;
+    let opciones = document.querySelectorAll('.opcion');
+    opciones.forEach(opcion => {
+      opcion.addEventListener('click', () => {        
+        let tema = opcion.getAttribute('tema');
+        this.selectedTheme = tema ? tema : 'light';
+        this.theme.setTheme(this.selectedTheme);
+      })
+    });
   }
 }

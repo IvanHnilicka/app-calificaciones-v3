@@ -11,14 +11,22 @@
         </div>        
     </header>
 
-    <div class="h-16 my-4 px-4 md:mx-4">
-        <label for="theme-select" class="text-xl text-textColor-{{selectedTheme}} lg:text-3xl">Tema: </label>
+    <!-- Contenedor temas -->
+    <div class="w-full p-4 flex items-center md:mx-4">
+        <h1 class="mr-2 text-xl text-textColor-{{selectedTheme}} lg:text-3xl">Tema: </h1>
 
-        <select id="theme-select" class="mx-1 px-3 text-lg appearance-none rounded-md bg-zinc-100 outline-none lg:text-2xl" (change)="changeTheme($event)">
-            <option value="light">Light Theme</option>
-            <option value="dark">Dark Theme</option>
-            <option value="pink">Pink Theme</option>
-        </select>
+        <div class="opcion w-1/4 flex justify-center" tema="light">
+            <div class="w-6 h-6 bg-primary-light border border-solid border-secondary-light rounded-full"></div>
+        </div>
+        <div class="opcion w-1/4 flex justify-center" tema="dark">
+            <div class="w-6 h-6 bg-primary-dark border border-solid border-secondary-dark rounded-full"></div>
+        </div>
+        <div class="opcion w-1/4 flex justify-center" tema="pink">
+            <div class="w-6 h-6 bg-primary-pink border border-solid border-secondary-pink rounded-full"></div>
+        </div>
+        <div class="opcion w-1/4 flex justify-center" tema="purple">
+            <div class="w-6 h-6 bg-primary-purple border border-solid border-secondary-purple rounded-full"></div>
+        </div>
     </div>
 
     <div class="flex h-full justify-center">

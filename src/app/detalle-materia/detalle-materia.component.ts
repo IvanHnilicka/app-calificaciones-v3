@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../local-storage.service';
 import { Materia } from '../materia.interface';
 import { ThemeService } from '../theme.service';
-import { Evaluacion } from '../evaluacion.interface';
 
 @Component({
   selector: 'app-detalle-materia',
@@ -14,13 +13,18 @@ export class DetalleMateriaComponent implements OnInit {
   constructor(private theme: ThemeService, private ls: LocalStorageService, private router: ActivatedRoute){}
   
   ngOnInit(): void {
-    this.selectedTheme = this.theme.getCurrentTheme();
-    this.materias = this.ls.getMaterias();
-    this.router.params.subscribe(params => {
-      this.index = params['index'];
-    })
+    try{
+      this.selectedTheme = this.theme.getCurrentTheme();
+      this.materias = this.ls.getMaterias();
+      this.router.params.subscribe(params => {
+        this.index = params['index'];
+      })
 
-    this.datosMateria = this.materias[this.index];
+      this.datosMateria = this.materias[this.index];
+
+    }catch(error){
+      console.log('Error. ', error);      
+    }
   }
 
   datosMateria: Materia = {
@@ -32,7 +36,7 @@ export class DetalleMateriaComponent implements OnInit {
   materias: Materia[] = [];
   materiaGuardada: boolean = true;
   mensajeError: string = '';
-  selectedTheme: string = '';
+  selectedTheme: string = 'light';
 
   calcularPuntos(calificacion: number, valor: number): string{
     return (calificacion * valor / 100).toFixed(2);
@@ -57,7 +61,11 @@ export class DetalleMateriaComponent implements OnInit {
   }
 
   guardarCalificaciones(): void {
-    this.materias[this.index] = this.datosMateria;
-    this.ls.guardarMaterias(this.materias);
+    try{
+      this.materias[this.index] = this.datosMateria;
+      this.ls.guardarMaterias(this.materias);
+    }catch(error){
+      console.log('Error. ', error);      
+    }
   }
 }
