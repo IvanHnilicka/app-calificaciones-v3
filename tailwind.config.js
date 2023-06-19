@@ -11,6 +11,11 @@ module.exports = {
           dark: '#343434',
           pink: '#F5C5D4',
         },
+        secondary: {
+          light: '#99afff',
+          dark: '#404040',
+          pink: '#f8d3df',
+        },
         background: {
           light: '#FFFFFF',
           dark: '#1B1B1B',
@@ -26,6 +31,11 @@ module.exports = {
           dark: '#FFFFFF',
           pink: '#000000'
         },
+        textColor2: {
+          light: '#4d73ff',
+          dark: '#ffffff',
+          pink: '#ed92af'
+        },
       },
       keyframes: {
         shrink: {
@@ -36,18 +46,19 @@ module.exports = {
         show: {
           '0%': { opacity: '0%' },
           '100%': { opacity: '100%' },
-        }
+        },
       },
       animation: {
         shrink: 'shrink 0.1s',
         show: 'show 1s',
-      }
+        load: 'show 0.5s',
+      },
     },
   },
   plugins: [],
   safelist: [
     {
-      pattern: /(bg|text|border)-(primary|background|darkBackground|textColor)-(light|dark|pink)/,
+      pattern: /(bg|text|border)-(primary|secondary|background|darkBackground|textColor|textColor2)-(light|dark|pink)/,
     },
   ]
 }

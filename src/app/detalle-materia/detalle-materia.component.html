@@ -1,0 +1,63 @@
+<body class="h-screen flex flex-col bg-background-{{selectedTheme}} overflow-scroll">
+    <!-- Headers -->
+    <div class="sticky z-10 top-0 ">
+        <!-- Header principal -->
+        <header class="h-16 m-0 flex flex-none items-center justify-between bg-primary-{{selectedTheme}} sm:h-20">
+            <h1 class="mx-2 text-white font-bold text-2xl sm:text-3xl">
+                {{ datosMateria.nombre }}
+            </h1>
+    
+            <!-- Botón regresar -->
+            <div class="flex mx-2">
+                <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full border border-solid text-2xl text-white border-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink" routerLink="/inicio" (click)="guardarCalificaciones()">
+                    <img src="../../assets/return-down-back-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
+                </button>
+            </div>        
+        </header>
+        
+        <!-- Subheader -->
+        <header class="sticky z-10 top-0 h-8 m-0 flex flex-none items-center justify-between bg-secondary-{{selectedTheme}} sm:h-10">
+            <h1 class="w-1/3 mx-auto text-white text-md text-center font-semibold sm:text-xl">
+                Evaluacion
+            </h1>
+    
+            <h1 class="w-1/3 mx-auto text-white text-md text-center font-semibold sm:text-xl">
+                Calificacion
+            </h1>
+    
+            <h1 class="w-1/3 mx-auto text-white text-md text-center font-semibold sm:text-xl">
+                Puntos
+            </h1>
+        </header>
+    </div>
+
+    <!-- Calificaciones -->
+    <div *ngFor="let evaluacion of datosMateria.evaluaciones">
+        <div class="h-8 m-0 my-2 flex flex-none items-center justify-between sm:h-10">
+            <h1 class="w-1/3 mx-auto text-textColor-{{selectedTheme}} text-md text-center sm:text-xl">
+                {{ evaluacion.nombre }}
+            </h1>    
+            
+            <input type="number" min="0" max="100" placeholder="{{evaluacion.calificacion}}" class="w-1/3 text-textColor-{{selectedTheme}} text-center bg-background-{{selectedTheme}} outline-none sm:text-xl" [(ngModel)]="evaluacion.calificacion">
+    
+            <h1 class="w-1/3 mx-auto text-textColor-{{selectedTheme}} text-md text-center sm:text-xl">
+                {{ calcularPuntos(evaluacion.calificacion, evaluacion.valor) }}
+            </h1>
+        </div>
+        
+        <hr class="w-full bg-zinc-400">
+    </div>
+    
+    <!-- Promedio -->
+    <div class="h-8 m-0 my-2 mb-4 text-textColor2-{{selectedTheme}} text-xl text-center font-semibold flex flex-none items-center justify-between  sm:text-2xl  sm:h-10">
+        <h1 class="w-1/3 mx-auto">
+            Promedio
+        </h1>
+
+        <h1 class="w-1/3 mx-auto"></h1>
+
+        <h1 class="w-1/3 mx-auto">
+            {{ calcularPromedio() }}
+        </h1>
+    </div>
+</body>

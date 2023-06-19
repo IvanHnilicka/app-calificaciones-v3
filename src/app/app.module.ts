@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { AgregarMateriaComponent } from './agregar-materia/agregar-materia.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
+import { DetalleMateriaComponent } from './detalle-materia/detalle-materia.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
     AgregarMateriaComponent,
-    AjustesComponent
+    AjustesComponent,
+    DetalleMateriaComponent
   ],
   imports: [
     BrowserModule,
