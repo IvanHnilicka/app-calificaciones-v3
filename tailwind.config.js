@@ -25,6 +25,11 @@ module.exports = {
           light: '#FFFFFF',
           dark: '#9A9A9A',
           pink: '#FFFFFF'
+        },
+        textColor: {
+          light: '#000000',
+          dark: '#FFFFFF',
+          pink: '#000000'
         }
       },
       keyframes: {
@@ -42,7 +47,7 @@ module.exports = {
   plugins: [],
   safelist: [
     {
-      pattern: /(bg|text|border)-(primary|secondary|background|darkBackground)-(light|dark|pink)/,
+      pattern: /(bg|text|border)-(primary|secondary|background|darkBackground|textColor)-(light|dark|pink)/,
     },
   ]
 }

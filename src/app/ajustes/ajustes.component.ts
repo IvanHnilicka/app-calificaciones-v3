@@ -13,5 +13,14 @@ export class AjustesComponent implements OnInit{
   
   ngOnInit(): void {
     this.selectedTheme = this.theme.getCurrentTheme();
+
+    const themeMenu = document.getElementById('theme-select');
+    (themeMenu as HTMLSelectElement).value = this.selectedTheme;
+  }
+
+  changeTheme(e: Event){
+    let newTheme = (e.target as HTMLSelectElement).value;
+    this.theme.setTheme(newTheme);
+    this.selectedTheme = newTheme;
   }
 }
