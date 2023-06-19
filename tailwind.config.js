@@ -30,7 +30,7 @@ module.exports = {
           light: '#000000',
           dark: '#FFFFFF',
           pink: '#000000'
-        }
+        },
       },
       keyframes: {
         shrink: {
