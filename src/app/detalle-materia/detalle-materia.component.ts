@@ -39,13 +39,13 @@ export class DetalleMateriaComponent implements OnInit {
   }
 
   calcularPromedio(): string{
-    let suma = 0;
+    let promedio = 0;
     let evaluaciones = this.datosMateria.evaluaciones;
     for(let i = 0; i < evaluaciones.length; i++){
-      suma += evaluaciones[i].calificacion;
-    }
+      promedio += evaluaciones[i].calificacion * evaluaciones[i].valor / 100;
+    }    
 
-    return (suma / evaluaciones.length).toFixed(2);
+    return promedio.toFixed(2);
   }
 
   validarInput(index:number): void{

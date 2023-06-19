@@ -42,7 +42,7 @@
                 {{ evaluacion.nombre }}
             </h1>    
             
-            <input type="number" min="0" max="100" placeholder="{{evaluacion.calificacion}}" class="w-1/3 text-md text-textColor-{{selectedTheme}} text-center bg-background-{{selectedTheme}} outline-none sm:text-xl" [(ngModel)]="evaluacion.calificacion" (change)="validarInput(i)">
+            <input type="number" min="0" max="100" placeholder="{{evaluacion.calificacion}}" class="w-1/3 text-md text-textColor-{{selectedTheme}} text-center bg-background-{{selectedTheme}} outline-none sm:text-xl" [(ngModel)]="evaluacion.calificacion" (change)="validarInput(i); guardarCalificaciones()">
     
             <h1 class="w-1/3 mx-auto text-textColor-{{selectedTheme}} text-md text-center sm:text-xl">
                 {{ calcularPuntos(evaluacion.calificacion, evaluacion.valor) }}
