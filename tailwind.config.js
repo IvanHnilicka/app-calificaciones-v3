@@ -9,13 +9,13 @@ module.exports = {
         primary: {
           light: '#7A96FF',
           dark: '#343434',
-          pink: '#F5C5D4',
+          pink: '#f0a8bf',
           purple: '#a23bc4',
         },
         secondary: {
           light: '#99afff',
           dark: '#404040',
-          pink: '#f8d3df',
+          pink: '#f5c5d4',
           purple: '#be76d6',
         },
         background: {

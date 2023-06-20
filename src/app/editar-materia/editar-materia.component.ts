@@ -58,22 +58,28 @@ export class EditarMateriaComponent implements OnInit {
   guardarNuevaMateria(): void {
     if(!this.datosMateria.nombre){
       this.materiaGuardada = false;
-      this.mensajeError = 'Error. Ingrese nombre de materia';
+      this.mensajeError = '*Error. Ingrese nombre de materia';
       return;
     }
     
     let evaluaciones: Evaluacion[] = this.datosMateria.evaluaciones
     let suma: number = 0;
     for(let i = 0; i < evaluaciones.length; i++){
-      if(!evaluaciones[i].nombre){
+      if(!this.datosMateria.nombre.replaceAll(' ', '')){
         this.materiaGuardada = false;
-        this.mensajeError = 'Error. Ingrese un nombre en la evaluacion ' + (i + 1);
+        this.mensajeError = '*Error. Ingrese nombre de materia';
+        return;
+      }
+
+      if(!evaluaciones[i].nombre.replaceAll(' ', '')){
+        this.materiaGuardada = false;
+        this.mensajeError = '*Error. Ingrese un nombre en la evaluacion ' + (i + 1);
         return;
       }
 
       if(evaluaciones[i].valor <= 0){
         this.materiaGuardada = false;
-        this.mensajeError = 'Error. Valor no puede ser ' + evaluaciones[i].valor + ' en ' + evaluaciones[i].nombre;
+        this.mensajeError = '*Error. Valor no puede ser ' + evaluaciones[i].valor + ' en ' + evaluaciones[i].nombre;
         return;
       }
 
@@ -82,8 +88,7 @@ export class EditarMateriaComponent implements OnInit {
 
     if(suma != 100){
       this.materiaGuardada = false;
-      this.mensajeError = 'Error. Verifique que la suma de valores sea de 100%';
-      console.log('Error. Verifique que la suma de valores sea de 100%');  
+      this.mensajeError = '*Error. Verifique que la suma de valores sea de 100%';
       return    
     }
 
