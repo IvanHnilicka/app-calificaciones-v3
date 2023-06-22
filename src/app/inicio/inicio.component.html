@@ -6,17 +6,17 @@
 
         <!-- Botones header -->
         <div class="flex gap-4 items-center mx-4 lg:gap-6">
-            <button class="h-12 w-12 flex items-center justify-center rounded-full text-2xl text-white sm:h-12 sm:w-12  active:bg-white active:animate-shrink" routerLink="/agregar">
+            <button class="h-12 w-12 flex items-center justify-center rounded-full text-2xl text-white sm:h-12 sm:w-12  active:animate-shrink" routerLink="/agregar">
                 <img src="../../assets/add-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
             </button>
-            <button class="h-10 w-10 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink" routerLink="/ajustes">
+            <button class="h-10 w-10 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:animate-shrink" routerLink="/ajustes">
                 <img src="../../assets/settings-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
             </button>
         </div>
     </header>
     
     <!-- Contenido principal -->
-    <div class="my-3 mx-2 flex flex-grow flex-col items-center lg:flex-row lg:flex-wrap lg:justify-center lg:content-stretch" *ngIf="materias.length">
+    <div class="my-3 mx-2 flex flex-grow flex-col items-center lg:flex-row lg:flex-wrap lg:justify-center lg:content-stretch animate-load" *ngIf="materias.length">
         <!-- Materias -->
         <div class="h-16 w-full min-h-fit mx-4 my-1 bg-secondary-{{selectedTheme}} flex items-center justify-center rounded-3xl cursor-pointer active:animate-shrink sm:h-20 sm:w-5/6 lg:w-1/4 lg:h-52 lg:mx-2" *ngFor="let materia of materias; index as i" [routerLink]="['/detalle', i]">
             <h1 class="text-white text-2xl sm:text-3xl lg:text-4xl">

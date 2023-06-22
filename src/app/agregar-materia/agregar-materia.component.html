@@ -2,7 +2,7 @@
     <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center bg-primary-{{selectedTheme}} sm:h-20">
         <!-- Botón regresar -->
         <div class="flex mx-2 md:mx-8">
-            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink" routerLink="/inicio">
+            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:animate-shrink" routerLink="/inicio">
                 <img src="../../assets/chevron-back-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
             </button>
         </div>
@@ -13,7 +13,7 @@
     </header>
     
     <!-- Contenido principal -->
-    <div class="flex flex-col mx-3 my-3 animate-load md:mx-8">
+    <div class="flex flex-col mx-3 my-3 animate-load md:mx-8 md:mr-4">
         <!-- Nombre de materia -->
         <div class="w-full mb-3 flex items-center">
             <label for="nombre-materia" class="mr-8 w-fit text-textColor-{{selectedTheme}} sm:text-xl">Nombre: </label>
@@ -27,8 +27,8 @@
             <label for="valor-evaluacion" class="text-textColor-{{selectedTheme}} mx-2 sm:text-xl">Valor: </label>
             <input id="valor-evaluacion" type="number" class="w-12 pl-2 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-14 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor" (focus)="mensajeError = ''">
 
-            <button class="w-20 h-2/3 ml-2 rounded-full flex items-center justify-center sm:w-16 active:animate-shrink">
-                <p class="text-xl text-red-600 font-bold font-mono sm:text-3xl" *ngIf="i > 0" (click)="eliminarEvaluacion(i)">x</p>
+            <button class="w-16 ml-2 rounded-full flex items-center justify-center self-center active:animate-shrink sm:w-12">
+                <img src="../../assets/cross-outline.svg" alt="Borrar" *ngIf="i > 0" (click)="eliminarEvaluacion(i)">
             </button>
         </div>
 

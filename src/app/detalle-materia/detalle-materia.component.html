@@ -2,8 +2,8 @@
     <!-- Headers -->
     <div class="sticky z-10 top-0 ">
         <!-- Header principal -->
-        <header class="h-16 m-0 relative flex items-center bg-primary-{{selectedTheme}} sm:h-20 lg:justify-around">
-            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink" routerLink="/inicio">
+        <header class="h-16 m-0 relative flex items-center bg-primary-{{selectedTheme}} sm:h-20 lg:justify-between lg:px-10">
+            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:animate-shrink" routerLink="/inicio">
                 <img src="../../assets/chevron-back-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
             </button>
 
@@ -13,7 +13,7 @@
             
             <!-- Contenedor botones -->
             <div class="flex mx-2 absolute right-3 lg:relative">
-                <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:bg-white active:animate-shrink" routerLink="/editar/{{index}}">
+                <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/editar/{{index}}">
                     <img src="../../assets/edit-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
                 </button>
             </div>

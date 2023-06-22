@@ -61,7 +61,7 @@ module.exports = {
       animation: {
         shrink: 'shrink 0.1s',
         show: 'show 1s',
-        load: 'show 0.5s',
+        load: 'show 0.3s',
         float: 'float 0.5s',
       },
     },
