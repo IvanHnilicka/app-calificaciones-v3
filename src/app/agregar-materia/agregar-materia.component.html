@@ -16,15 +16,15 @@
     <div class="flex flex-col mx-3 my-3 animate-load md:mx-8 md:mr-4">
         <!-- Nombre de materia -->
         <div class="w-full mb-3 flex items-center">
-            <label for="nombre-materia" class="mr-8 w-fit text-textColor-{{selectedTheme}} sm:text-xl">Nombre: </label>
+            <label for="nombre-materia" class="mr-8 w-fit text-textColor-{{selectedTheme}} font-semibold sm:text-xl">Nombre: </label>
             <input id="nombre-materia" type="text" class="w-full px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:sm:text-xl" placeholder="Ej. Español" [(ngModel)]="nuevaMateria.nombre" (focus)="mensajeError = ''">
         </div>
 
         <!-- Evaluaciones -->
         <div class="w-full mb-3 flex items-center animate-show" *ngFor="let evaluacion of nuevaMateria.evaluaciones; index as i">
-            <label for="nombre-evaluacion" class="mr-4 w-fit text-textColor-{{selectedTheme}} sm:text-xl sm:mr-3">Evaluacion: </label>
+            <label for="nombre-evaluacion" class="mr-4 w-fit text-textColor-{{selectedTheme}} font-semibold sm:text-xl sm:mr-3">Evaluacion: </label>
             <input id="nombre-evaluacion" type="text" class="w-full mr-1 px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:text-xl lg:mr-4" placeholder="Ej. Examen" [(ngModel)]="evaluacion.nombre" (focus)="mensajeError = ''">
-            <label for="valor-evaluacion" class="text-textColor-{{selectedTheme}} mx-2 sm:text-xl">Valor: </label>
+            <label for="valor-evaluacion" class="text-textColor-{{selectedTheme}} mx-2 font-semibold sm:text-xl">Valor: </label>
             <input id="valor-evaluacion" type="number" class="w-12 pl-2 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-14 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor" (focus)="mensajeError = ''">
 
             <button class="w-16 ml-2 rounded-full flex items-center justify-center self-center active:animate-shrink sm:w-12">

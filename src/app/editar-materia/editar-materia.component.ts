@@ -33,6 +33,7 @@ export class EditarMateriaComponent implements OnInit {
     evaluaciones: [],
   }
 
+  disabledBtn: boolean = false;
   index: number = 0;
   modalConfirmacion = false;
   modalEliminada = false;
@@ -102,8 +103,7 @@ export class EditarMateriaComponent implements OnInit {
   }
 
   eliminarMateria(): void {
-    const btnEliminar = document.getElementById('btn-eliminar');
-    (btnEliminar as HTMLButtonElement).style.display = 'none';
+    this.disabledBtn = true;
 
     try{
       this.materias.splice(this.index, 1);
