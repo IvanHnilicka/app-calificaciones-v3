@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../theme.service';
 import { Materia } from '../materia.interface';
-import { NonNullableFormBuilder } from '@angular/forms';
 import { LocalStorageService } from '../local-storage.service';
 import { Evaluacion } from '../evaluacion.interface';
+import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-materia',
@@ -11,7 +12,11 @@ import { Evaluacion } from '../evaluacion.interface';
   styleUrls: ['./agregar-materia.component.css']
 })
 export class AgregarMateriaComponent implements OnInit{
-  constructor(private theme: ThemeService, private ls: LocalStorageService){ }
+  constructor(private theme: ThemeService, private ls: LocalStorageService, private platform: Platform, private router: Router){ 
+    this.platform.backButton.subscribe(() => {
+      this.router.navigate(['/inicio'], { replaceUrl: true });
+    })
+  }
   
   ngOnInit(): void {
     try{

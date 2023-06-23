@@ -9,7 +9,7 @@ import { Materia } from '../materia.interface';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  constructor(public theme:ThemeService, private ls: LocalStorageService){ }
+  constructor(public theme:ThemeService, private ls: LocalStorageService){}
 
   ngOnInit(): void {
     try{

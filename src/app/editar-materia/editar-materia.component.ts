@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ThemeService } from '../theme.service';
 import { Materia } from '../materia.interface';
 import { LocalStorageService } from '../local-storage.service';
 import { Evaluacion } from '../evaluacion.interface';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-editar-materia',
@@ -11,13 +12,17 @@ import { Evaluacion } from '../evaluacion.interface';
   styleUrls: ['./editar-materia.component.css']
 })
 export class EditarMateriaComponent implements OnInit {
-  constructor(private theme: ThemeService, private ls: LocalStorageService, private router: ActivatedRoute) {}
+  constructor(private theme: ThemeService, private ls: LocalStorageService, private route: ActivatedRoute, private platform: Platform, private router: Router) {
+    this.platform.backButton.subscribe(() => {
+      this.router.navigate(['/inicio'], { replaceUrl: true });
+    });
+  }
   
   ngOnInit(): void {
     try{
       this.selectedTheme = this.theme.getCurrentTheme();
       this.materias = this.ls.getMaterias();      
-      this.router.params.subscribe(params => {
+      this.route.params.subscribe(params => {
         this.index = params['index'];
       });
       

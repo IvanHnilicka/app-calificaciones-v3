@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ThemeService } from '../theme.service';
 import { LocalStorageService } from '../local-storage.service';
+import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajustes',
@@ -9,7 +11,11 @@ import { LocalStorageService } from '../local-storage.service';
   styleUrls: ['./ajustes.component.css']
 })
 export class AjustesComponent implements OnInit{  
-  constructor(private theme:ThemeService, private ls:LocalStorageService){ }
+  constructor(private theme:ThemeService, private ls:LocalStorageService, private platform: Platform, private router: Router){ 
+    this.platform.backButton.subscribe(() => {
+      this.router.navigate(['/inicio'], { replaceUrl: true });
+    });
+  }
   
   ngOnInit(): void {
     try{

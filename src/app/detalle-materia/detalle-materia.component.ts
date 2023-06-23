@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../local-storage.service';
 import { Materia } from '../materia.interface';
 import { ThemeService } from '../theme.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle-materia',
@@ -10,13 +11,17 @@ import { ThemeService } from '../theme.service';
   styleUrls: ['./detalle-materia.component.css']
 })
 export class DetalleMateriaComponent implements OnInit {
-  constructor(private theme: ThemeService, private ls: LocalStorageService, private router: ActivatedRoute){}
+  constructor(private theme: ThemeService, private ls: LocalStorageService, private route: ActivatedRoute, private platform: Platform, private router: Router){
+    this.platform.backButton.subscribe(() => {
+      this.router.navigate(['/inicio'], { replaceUrl: true });
+    });
+  }
   
   ngOnInit(): void {
     try{
       this.selectedTheme = this.theme.getCurrentTheme();
       this.materias = this.ls.getMaterias();
-      this.router.params.subscribe(params => {
+      this.route.params.subscribe(params => {
         this.index = params['index'];
       })
 
