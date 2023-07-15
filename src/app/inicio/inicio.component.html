@@ -16,10 +16,10 @@
     </header>
     
     <!-- Contenido principal -->
-    <div class="my-3 mx-2 flex flex-grow flex-col items-center lg:flex-row lg:flex-wrap lg:justify-center lg:content-stretch animate-load" *ngIf="materias.length">
+    <div class="my-3 mx-2 flex flex-grow flex-col text-center items-center lg:flex-row lg:flex-wrap lg:justify-center lg:content-stretch animate-load" *ngIf="materias.length">
         <!-- Materias -->
         <div class="h-16 w-full min-h-fit mx-4 my-1 bg-secondary-{{selectedTheme}} flex items-center justify-center rounded-3xl cursor-pointer active:animate-shrink sm:h-20 sm:w-5/6 lg:w-1/4 lg:h-52 lg:mx-2" *ngFor="let materia of materias; index as i" [routerLink]="['/detalle', i]">
-            <h1 class="text-white text-2xl sm:text-3xl lg:text-4xl">
+            <h1 class="px-8 text-white text-2xl truncate sm:text-3xl lg:text-4xl">
                 {{ materia.nombre }}
             </h1>
         </div>

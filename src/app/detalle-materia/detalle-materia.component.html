@@ -3,24 +3,22 @@
     <div class="sticky z-10 top-0 ">
         <!-- Header principal -->
         <header class="h-16 m-0 relative flex items-center bg-primary-{{selectedTheme}} sm:h-20 lg:justify-between lg:px-10">
-            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10  active:animate-shrink" routerLink="/inicio">
-                <img src="../../assets/chevron-back-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
+            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/inicio">
+                <img src="../../assets/chevron-back-outline.svg" alt="Regresar" class="h-3/4 w-3/4">
             </button>
 
-            <h1 class="mx-2 px-2 text-white font-bold text-2xl sm:text-3xl sm:mx-6 md:mx-8">
+            <h1 class="w-full px-4 text-white font-bold text-2xl truncate sm:text-3xl sm:mx-6 md:mx-8 lg:text-center lg:mx-0 lg:px-0">
                 {{ datosMateria.nombre }}
             </h1>
             
             <!-- Contenedor botones -->
-            <div class="flex mx-2 absolute right-3 lg:relative">
-                <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/editar/{{index}}">
-                    <img src="../../assets/edit-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
-                </button>
-            </div>
+            <button class="h-10 w-10 mx-4 flex items-center justify-center justify-self-end rounded-full text-2xl text-white sm:h-12 sm:w-12 sm:mx-7 active:animate-shrink lg:mx-2" routerLink="/editar/{{index}}">
+                <img src="../../assets/edit-outline.svg" alt="Editar" class="h-3/4 w-3/4">
+            </button>
         </header>
         
         <!-- Subheader -->
-        <header class="sticky z-10 top-0 h-8 m-0 px-2 text-white text-md text-center flex flex-none items-center justify-between bg-secondary-{{selectedTheme}} sm:h-10">
+        <header class="sticky z-10 top-0 h-8 m-0 text-white text-md text-center flex flex-none items-center justify-between bg-secondary-{{selectedTheme}} sm:h-10">
             <h1 class="w-1/3 mx-auto font-semibold sm:text-xl">
                 Evaluacion
             </h1>
