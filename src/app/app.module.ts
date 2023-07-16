@@ -9,6 +9,7 @@ import { AgregarMateriaComponent } from './agregar-materia/agregar-materia.compo
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { DetalleMateriaComponent } from './detalle-materia/detalle-materia.component';
 import { EditarMateriaComponent } from './editar-materia/editar-materia.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { EditarMateriaComponent } from './editar-materia/editar-materia.componen
     AgregarMateriaComponent,
     AjustesComponent,
     DetalleMateriaComponent,
-    EditarMateriaComponent
+    EditarMateriaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

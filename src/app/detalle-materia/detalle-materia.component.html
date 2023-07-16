@@ -1,65 +1,66 @@
-<body class="h-screen flex flex-col bg-background-{{selectedTheme}} overflow-y-scroll">
-    <!-- Headers -->
-    <div class="sticky z-10 top-0 ">
-        <!-- Header principal -->
-        <header class="h-16 m-0 relative flex items-center bg-primary-{{selectedTheme}} sm:h-20 lg:justify-between lg:px-10">
-            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/inicio">
-                <img src="../../assets/chevron-back-outline.svg" alt="Regresar" class="h-3/4 w-3/4">
-            </button>
-
-            <h1 class="w-full px-4 text-white font-bold text-2xl truncate sm:text-3xl sm:mx-6 md:mx-8 lg:text-center lg:mx-0 lg:px-0">
-                {{ datosMateria.nombre }}
-            </h1>
-            
-            <!-- Contenedor botones -->
-            <button class="h-10 w-10 mx-4 flex items-center justify-center justify-self-end rounded-full text-2xl text-white sm:h-12 sm:w-12 sm:mx-7 active:animate-shrink lg:mx-2" routerLink="/editar/{{index}}">
-                <img src="../../assets/edit-outline.svg" alt="Editar" class="h-3/4 w-3/4">
-            </button>
-        </header>
+<body class="h-screen pb-16 flex flex-col bg-background-{{selectedTheme}} overflow-y-scroll">
+    <!-- Header principal -->
+    <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center justify-between bg-primary-{{selectedTheme}} sm:h-20">
+        <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/inicio">
+            <img src="../../assets/chevron-back-outline.svg" alt="Regresar" class="h-3/4 w-3/4">
+        </button>
+    
+        <h1 class="w-full px-6 text-white font-bold text-2xl truncate sm:text-3xl md:mx-2 lg:text-center lg:mx-0 lg:px-0">
+            {{ datosMateria.nombre }}
+        </h1>
+    
+        <button class="h-10 w-10 mx-4 flex items-center justify-center justify-self-end rounded-full text-2xl text-white sm:h-12 sm:w-12 sm:mx-7 active:animate-shrink lg:mx-2" routerLink="/editar/{{index}}">
+            <img src="../../assets/edit-outline.svg" alt="Editar" class="h-3/4 w-3/4">
+        </button>
+    </header>
         
-        <!-- Subheader -->
-        <header class="sticky z-10 top-0 h-8 m-0 text-white text-md text-center flex flex-none items-center justify-between bg-secondary-{{selectedTheme}} sm:h-10">
-            <h1 class="w-1/3 mx-auto font-semibold sm:text-xl">
-                Evaluacion
-            </h1>
+    <!-- Subheader -->
+    <header class="sticky z-10 top-16 h-8 m-0 text-white text-md text-center flex flex-none items-center justify-between bg-secondary-{{selectedTheme}} sm:h-10 sm:top-20">
+        <h1 class="w-1/3 mx-auto font-semibold sm:text-xl">
+            Evaluacion
+        </h1>
     
-            <h1 class="w-1/3 mx-auto font-semibold sm:text-xl">
-                Calificacion
-            </h1>
+        <h1 class="w-1/3 mx-auto font-semibold sm:text-xl">
+            Calificacion
+        </h1>
     
-            <h1 class="w-1/3 mx-auto font-semibold sm:text-xl">
-                Puntos
-            </h1>
-        </header>
-    </div>
+        <h1 class="w-1/3 mx-auto font-semibold sm:text-xl">
+            Puntos
+        </h1>
+    </header>
 
-    <!-- Calificaciones -->
-    <div *ngFor="let evaluacion of datosMateria.evaluaciones; index as i" class="animate-show">
-        <div class="h-8 m-0 px-2 my-2 flex flex-none items-center justify-between sm:h-10">
-            <h1 class="w-1/3 mx-auto text-textColor-{{selectedTheme}} text-md text-center sm:text-xl">
-                {{ evaluacion.nombre }}
-            </h1>
+    <!-- Contenido principal -->
+    <div class="flex flex-col flex-grow">
+        <!-- Calificaciones -->
+        <div *ngFor="let evaluacion of datosMateria.evaluaciones; index as i" class="animate-show">
+            <div class="h-8 m-0 px-2 my-2 flex flex-none items-center justify-between sm:h-10">
+                <h1 class="w-1/3 mx-auto text-textColor-{{selectedTheme}} text-md text-center sm:text-xl">
+                    {{ evaluacion.nombre }}
+                </h1>
+                
+                <input type="number" min="0" max="100" placeholder="{{evaluacion.calificacion}}" class="w-1/3 text-md text-textColor-{{selectedTheme}} text-center bg-background-{{selectedTheme}} outline-none sm:text-xl" [(ngModel)]="evaluacion.calificacion" (change)="validarInput(i); guardarCalificaciones()">
+        
+                <h1 class="w-1/3 mx-auto text-textColor-{{selectedTheme}} text-md text-center sm:text-xl">
+                    {{ calcularPuntos(evaluacion.calificacion, evaluacion.valor) }}
+                </h1>
+            </div>
             
-            <input type="number" min="0" max="100" placeholder="{{evaluacion.calificacion}}" class="w-1/3 text-md text-textColor-{{selectedTheme}} text-center bg-background-{{selectedTheme}} outline-none sm:text-xl" [(ngModel)]="evaluacion.calificacion" (change)="validarInput(i); guardarCalificaciones()">
-    
-            <h1 class="w-1/3 mx-auto text-textColor-{{selectedTheme}} text-md text-center sm:text-xl">
-                {{ calcularPuntos(evaluacion.calificacion, evaluacion.valor) }}
-            </h1>
+            <hr class="w-full bg-zinc-400 opacity-50">
         </div>
         
-        <hr class="w-full bg-zinc-400 opacity-50">
+        <!-- Promedio -->
+        <div class="h-8 m-0 my-2 px-2 mb-4 text-textColor2-{{selectedTheme}} text-xl text-center font-semibold flex flex-none items-center justify-between sm:text-2xl sm:h-10 animate-show">
+            <h1 class="w-1/3 mx-auto">
+                Promedio
+            </h1>
+    
+            <h1 class="w-1/3 mx-auto"></h1>
+    
+            <h1 class="w-1/3 mx-auto">
+                {{ calcularPromedio() }}
+            </h1>
+        </div>
     </div>
     
-    <!-- Promedio -->
-    <div class="h-8 m-0 my-2 px-2 mb-4 text-textColor2-{{selectedTheme}} text-xl text-center font-semibold flex flex-none items-center justify-between sm:text-2xl sm:h-10 animate-show">
-        <h1 class="w-1/3 mx-auto">
-            Promedio
-        </h1>
-
-        <h1 class="w-1/3 mx-auto"></h1>
-
-        <h1 class="w-1/3 mx-auto">
-            {{ calcularPromedio() }}
-        </h1>
-    </div>
+    <app-footer></app-footer>
 </body>

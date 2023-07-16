@@ -1,4 +1,4 @@
-<body class="h-screen flex flex-col bg-background-{{selectedTheme}} overflow-y-scroll">
+<body class="h-screen pb-16 flex flex-col bg-background-{{selectedTheme}} overflow-y-scroll">
     <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center bg-primary-{{selectedTheme}} sm:h-20">
         <!-- Botón regresar -->
         <div class="flex mx-2 md:mx-8">
@@ -13,7 +13,7 @@
     </header>
     
     <!-- Contenido principal -->
-    <div class="flex flex-col mx-3 my-3 animate-load md:mx-8 md:mr-4">
+    <div class="flex flex-col flex-grow mx-3 my-3 animate-load md:mx-8 md:mr-4">
         <!-- Nombre de materia -->
         <div class="w-full mb-3 flex items-center">
             <label for="nombre-materia" class="mr-8 w-fit text-textColor-{{selectedTheme}} sm:text-xl">Nombre: </label>
@@ -61,3 +61,5 @@
         </div>
     </div>
 </body>
+
+    <app-footer></app-footer>

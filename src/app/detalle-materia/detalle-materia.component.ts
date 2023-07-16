@@ -25,7 +25,11 @@ export class DetalleMateriaComponent implements OnInit {
         this.index = params['index'];
       })
 
-      this.datosMateria = this.materias[this.index];
+      if(this.materias[this.index]){
+        this.datosMateria = this.materias[this.index];
+      }else{
+        this.router.navigate(['/inicio'], { replaceUrl: true });
+      }
 
     }catch(error){
       console.log('Error. ', error);      

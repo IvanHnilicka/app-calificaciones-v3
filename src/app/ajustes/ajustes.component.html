@@ -1,4 +1,4 @@
-<body class="flex flex-col h-screen bg-background-{{selectedTheme}} overflow-y-scroll">
+<body class="pb-16 flex flex-col h-screen bg-background-{{selectedTheme}} overflow-y-scroll">
     <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center bg-primary-{{selectedTheme}} sm:h-20">
         <div class="flex mx-2 md:mx-8">
             <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/inicio">
@@ -61,7 +61,7 @@
     </div>
 
 
-    <!-- Modal materia eliminada -->
+    <!-- Modal materias eliminadas -->
     <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalEliminadas">
         <!-- Contenido modal -->
         <div class="w-fit h-fit mx-4 px-8 py-4 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
@@ -74,4 +74,5 @@
             </button>
         </div>
     </div>
+    <app-footer></app-footer>
 </body>
