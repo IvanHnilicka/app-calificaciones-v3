@@ -46,7 +46,7 @@ module.exports = {
       keyframes: {
         shrink: {
           '0%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(0.95)' },
+          '50%': { transform: 'scale(0.92)' },
           '100%': { transform: 'scale(1)' },
         },
         show: {

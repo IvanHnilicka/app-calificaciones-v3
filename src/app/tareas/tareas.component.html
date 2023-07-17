@@ -1,0 +1,31 @@
+<body class="pb-12 flex flex-col h-screen bg-background-{{selectedTheme}} overflow-y-scroll">
+    <!-- Header -->
+    <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center justify-between bg-primary-{{selectedTheme}} sm:h-20">
+        <h1 class="w-full px-6 text-white font-bold text-2xl truncate sm:text-3xl md:mx-2 lg:text-center lg:mx-0 lg:px-0">
+            Tareas
+        </h1>
+        
+        <button class="h-10 w-10 mx-4 flex items-center justify-center justify-self-end rounded-full text-2xl text-white sm:h-12 sm:w-12 sm:mx-7 active:animate-shrink lg:mx-2">
+            <img src="../../assets/add-outline.svg" alt="Agregar" class="h-full w-full">
+        </button>
+    </header>
+
+    <!-- Contenedor tareas -->
+    <div class="h-full flex flex-col gap-2 px-4 py-2 pb-6 overflow-y-scroll" *ngIf="tareas.length">
+        <!-- Tarea -->
+        <div class="tarea h-fit w-full px-6 py-3 rounded-full relative flex items-center gap-4 shadow-lg" *ngFor="let tarea of tareas">
+            <h1 class="w-2/4 truncate text-textColor-{{ selectedTheme }}"> {{ tarea.nombre }} </h1>
+            <h1 class="w-1/4 text-textColor-{{ selectedTheme }}"> {{ tarea.fecha.toLocaleDateString() }} </h1>
+            <input type="checkbox" class="absolute right-12" [ngModel]="tarea.completada" (change)="tarea.completada = !tarea.completada">
+            <button class="h-full m-0 flex justify-center items-center absolute right-3 active:animate-shrink" *ngIf="tarea.completada">
+                <img src="../../assets/trash-outline-red.svg" alt="Borrar" class="h-5 w-5">
+            </button>
+        </div>
+    </div>
+        
+    <!-- Mensaje arreglo tareas pendientes vacío -->
+    <div class="w-full my-auto text-center" *ngIf="!tareas.length">
+        <h1 class="px-4 text-xl text-textColor-{{selectedTheme}} opacity-25 font-bold lg:text-2xl">No tienes tareas. Para agregar una pulsa el boton de &plus; en la esquina superior derecha</h1>
+    </div>
+</body>
+<app-footer></app-footer>

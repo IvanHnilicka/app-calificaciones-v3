@@ -10,6 +10,7 @@ import { AjustesComponent } from './ajustes/ajustes.component';
 import { DetalleMateriaComponent } from './detalle-materia/detalle-materia.component';
 import { EditarMateriaComponent } from './editar-materia/editar-materia.component';
 import { FooterComponent } from './footer/footer.component';
+import { TareasComponent } from './tareas/tareas.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     AjustesComponent,
     DetalleMateriaComponent,
     EditarMateriaComponent,
-    FooterComponent
+    FooterComponent,
+    TareasComponent
   ],
   imports: [
     BrowserModule,
