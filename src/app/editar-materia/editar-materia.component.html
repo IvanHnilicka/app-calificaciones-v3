@@ -23,10 +23,10 @@
 
         <!-- Evaluaciones -->
         <div class="w-full mb-3 flex items-center animate-show" *ngFor="let evaluacion of datosMateria.evaluaciones; index as i">
-            <label for="nombre-evaluacion" class="mr-4 w-fit text-textColor-{{selectedTheme}} sm:text-xl sm:mr-3">Evaluacion: </label>
-            <input id="nombre-evaluacion" type="text" class="w-full mr-1 px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:text-xl lg:mr-4" placeholder="Ej. Examen" [(ngModel)]="evaluacion.nombre" (change)="mensajeError = ''">
-            <label for="valor-evaluacion" class="text-textColor-{{selectedTheme}} mx-2 sm:text-xl">Valor: </label>
-            <input id="valor-evaluacion" type="number" class="w-12 pl-2 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-14 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor" (change)="mensajeError = ''">
+            <label for="nombre-evaluacion-{{i}}" class="mr-4 w-fit text-textColor-{{selectedTheme}} sm:text-xl sm:mr-3">Evaluacion: </label>
+            <input id="nombre-evaluacion-{{i}}" type="text" class="w-full mr-1 px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:text-xl lg:mr-4" placeholder="Ej. Examen" [(ngModel)]="evaluacion.nombre" (change)="mensajeError = ''">
+            <label for="valor-evaluacion-{{i}}" class="text-textColor-{{selectedTheme}} mx-2 sm:text-xl">Valor: </label>
+            <input id="valor-evaluacion-{{i}}" type="number" class="w-12 pl-2 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-14 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor" (change)="mensajeError = ''">
 
             <button class="w-16 ml-2 rounded-full flex items-center justify-center self-center active:animate-shrink sm:w-12">
                 <img src="../../assets/cross-outline.svg" alt="Borrar" *ngIf="i > 0" (click)="eliminarEvaluacion(i)">
@@ -102,5 +102,4 @@
             </div>
         </div>
     </div>
-    <app-footer></app-footer>
 </body>
