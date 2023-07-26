@@ -15,29 +15,19 @@ export class TareasComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    let nombresTareas = document.querySelectorAll('.tarea'); 
-    for(let i = 0; i < nombresTareas.length; i++){
-      if(this.tareas[i].completada){
-        (nombresTareas[i] as HTMLElement).style.setProperty('text-decoration', 'line-through');
-      }else{
-        (nombresTareas[i] as HTMLElement).style.setProperty('text-decoration', 'none');
-      }
-    }
-
     this.colorBotonEditar();
   }
-
-
+  textDecorationColor: string = '#bfbfbf';
   selectedTheme: string = 'light';
   tareas: Tarea[] = [
     {
       nombre: 'Tarea 1',
-      fecha: new Date(),
+      fecha: new Date('2003-3-21'),
       completada: true,
     },
     {
       nombre: 'Tarea 2',
-      fecha: new Date(),
+      fecha: new Date('2006-4-9'),
       completada: false,
     },
   ];
@@ -48,16 +38,12 @@ export class TareasComponent implements OnInit {
     let nombresTareas = document.querySelectorAll('.tarea');
     this.tareas[index].completada = !this.tareas[index].completada;
 
-    if(this.tareas[index].completada){
-      (nombresTareas[index] as HTMLElement).style.setProperty('text-decoration', 'line-through');
-    }else{
-      (nombresTareas[index] as HTMLElement).style.setProperty('text-decoration', 'none');
-      
-      // Se agrega delay para dar tiempo a que el botón cargue antes de intentar modificarlo
+    if(!this.tareas[index].completada){
+      // Se agrega delay para dar tiempo a que el botón cargue antes de modificarlo
       setTimeout(() => {
         this.colorBotonEditar()
-      }, 1);      
-    }
+      }, 1);
+    }      
   }
 
   // Cambia la imagen del botón Editar según el tema escogido

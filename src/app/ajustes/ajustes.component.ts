@@ -41,7 +41,7 @@ export class AjustesComponent implements OnInit{
 
   borrarMaterias(): void{
     try{
-      this.ls.guardarMaterias([]);
+      this.ls.setMaterias([]);
     }catch(error){
       console.log('Error. ', error);      
     }

@@ -72,7 +72,7 @@ export class DetalleMateriaComponent implements OnInit {
   guardarCalificaciones(): void {
     try{
       this.materias[this.index] = this.datosMateria;
-      this.ls.guardarMaterias(this.materias);
+      this.ls.setMaterias(this.materias);
     }catch(error){
       console.log('Error. ', error);      
     }

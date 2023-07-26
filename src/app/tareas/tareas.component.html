@@ -13,8 +13,9 @@
     <!-- Contenedor tareas -->
     <div class="h-full flex flex-col gap-2 px-4 py-2 pb-6 overflow-y-scroll animate-load" *ngIf="tareas.length">
         <!-- Tarea -->
-        <div class="h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareas; index as i">
-            <h1 id="header" class="tarea w-2/4 truncate text-textColor-{{ selectedTheme }} md:text-2xl"> {{ tarea.nombre }} </h1>
+        <div class="tarea h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareas; index as i">
+            <div class="w-2/3 h-[2px] absolute top-1/2 left-6 bg-[#d9d9d9] md:w-7/12 md:left-10" *ngIf="tarea.completada"></div>
+            <h1 id="header" class="w-2/4 truncate text-textColor-{{ selectedTheme }} md:text-2xl"> {{ tarea.nombre }} </h1>
             <h1 class="w-2/4 text-textColor-{{ selectedTheme }} md:text-2xl"> {{ tarea.fecha.toLocaleDateString() }} </h1>
             <input type="checkbox" class="absolute right-14 md:w-5 md:h-5 md:right-32" [(ngModel)]="tarea.completada" (click)="changeCompleted(i)">
             <button class="h-full m-0 flex justify-center items-center absolute right-5 md:right-14 active:animate-shrink" *ngIf="!tarea.completada" (click)="print('Editar tarea')">

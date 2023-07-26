@@ -106,7 +106,7 @@ export class EditarMateriaComponent implements OnInit {
 
     try{
       this.materias[this.index] = this.datosMateria;
-      this.ls.guardarMaterias(this.materias);
+      this.ls.setMaterias(this.materias);
       this.materiaGuardada = true;
     }catch(error){
       console.log('Error. ', error);      
@@ -118,7 +118,7 @@ export class EditarMateriaComponent implements OnInit {
 
     try{
       this.materias.splice(this.index, 1);
-      this.ls.guardarMaterias(this.materias);
+      this.ls.setMaterias(this.materias);
     }catch(error){
       console.log('Error. ', error);
     }      

@@ -93,7 +93,7 @@ export class AgregarMateriaComponent implements OnInit{
 
     try{
       this.materias.push(this.nuevaMateria);
-      this.ls.guardarMaterias(this.materias);
+      this.ls.setMaterias(this.materias);
       this.materiaGuardada = true;
     }catch(error){
       console.log('Error. ', error);      

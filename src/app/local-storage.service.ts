@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Materia } from './materia.interface';
+import { Tarea } from './tarea.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,22 @@ export class LocalStorageService {
 
   constructor() { }
   
-  guardarMaterias(datos: Materia[]){
+  setMaterias(datos: Materia[]) {
     localStorage.setItem('materias', JSON.stringify(datos));
   }
 
-  getMaterias(){
+  getMaterias() {
     let materias = localStorage.getItem('materias');
     return materias?JSON.parse(materias):[];
   }
+
+  setTareas(tareas: Tarea[]) {
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+  }
+  
+  getTareas() {
+    let tareas = localStorage.getItem('tareas');
+    return tareas?JSON.parse(tareas):[];
+  }
+
 }
