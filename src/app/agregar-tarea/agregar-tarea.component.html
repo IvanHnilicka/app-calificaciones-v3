@@ -17,11 +17,11 @@
     <div class="h-full flex flex-col flex-grow mx-3 my-6 gap-4 animate-load md:mx-6 md:gap-8">
         <div class="w-full flex sm:h-10">
             <label for="nombre-tarea" class="ml-4 w-fit self-center text-textColor-{{selectedTheme}} sm:text-xl sm:mr-3 lg:text-2xl">Nombre: </label>
-            <input type="text" id="nombre-tarea" placeholder="Tarea 1" class="w-full mx-4 px-3 outline-none appearance-none rounded-full md:h-12 md:text-2xl lg:mr-4" [(ngModel)]="nuevaTarea.nombre">
+            <input type="text" id="nombre-tarea" placeholder="Tarea 1" class="w-full mx-4 px-3 outline-none appearance-none border border-solid border-primary-{{selectedTheme}} rounded-full md:h-12 md:text-2xl lg:mr-4" [(ngModel)]="nuevaTarea.nombre">
         </div>
         <div class="w-full flex items-start px-4 sm:h-10">
             <label for="fecha-tarea" class="ml-4 w-fit self-center text-textColor-{{selectedTheme}} sm:text-xl sm:mr-7 lg:text-2xl">Fecha: </label>
-            <input type="date" name="fecha-tarea" id="fecha-tarea" class="sm:ml-2 ml-4 h-full w-full appearance-none outline-none px-3 rounded-full md:h-12 md:text-2xl md:ml-2" [(ngModel)]="nuevaTarea.fecha">
+            <input type="date" name="fecha-tarea" id="fecha-tarea" class="sm:ml-2 ml-4 h-full w-full appearance-none outline-none px-3 border border-solid border-primary-{{selectedTheme}} rounded-full md:h-12 md:text-2xl md:ml-2" [(ngModel)]="nuevaTarea.fecha">
         </div>
         
         <!-- Mensaje error -->
