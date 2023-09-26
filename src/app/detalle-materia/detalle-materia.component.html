@@ -1,7 +1,7 @@
 <body class="h-screen pb-16 flex flex-col bg-background-{{selectedTheme}} overflow-y-scroll">
     <!-- Header principal -->
     <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center justify-between bg-primary-{{selectedTheme}} sm:h-20">
-        <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/inicio">
+        <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-20 active:animate-shrink" routerLink="/inicio">
             <img src="../../assets/chevron-back-outline.svg" alt="Regresar" class="h-3/4 w-3/4">
         </button>
     
@@ -9,7 +9,7 @@
             {{ datosMateria.nombre }}
         </h1>
     
-        <button class="h-10 w-10 mx-4 flex items-center justify-center justify-self-end rounded-full text-2xl text-white sm:h-12 sm:w-12 sm:mx-7 active:animate-shrink lg:mx-2" routerLink="/editar/{{index}}">
+        <button class="h-10 w-10 mx-4 flex items-center justify-center justify-self-end rounded-full text-2xl text-white sm:h-12 sm:w-24 sm:mx-7 active:animate-shrink lg:mx-2" routerLink="/editar/{{index}}">
             <img src="../../assets/edit-outline.svg" alt="Editar" class="h-3/4 w-3/4">
         </button>
     </header>
