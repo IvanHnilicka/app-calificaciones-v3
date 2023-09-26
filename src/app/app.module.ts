@@ -11,6 +11,7 @@ import { DetalleMateriaComponent } from './detalle-materia/detalle-materia.compo
 import { EditarMateriaComponent } from './editar-materia/editar-materia.component';
 import { FooterComponent } from './footer/footer.component';
 import { TareasComponent } from './tareas/tareas.component';
+import { AgregarTareaComponent } from './agregar-tarea/agregar-tarea.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TareasComponent } from './tareas/tareas.component';
     DetalleMateriaComponent,
     EditarMateriaComponent,
     FooterComponent,
-    TareasComponent
+    TareasComponent,
+    AgregarTareaComponent
   ],
   imports: [
     BrowserModule,

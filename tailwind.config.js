@@ -75,7 +75,7 @@ module.exports = {
   plugins: [],
   safelist: [
     {
-      pattern: /(bg|text|border)-(primary|secondary|background|darkBackground|transBackground|textColor|textColor2)-(light|dark|pink|purple)/,
+      pattern: /(bg|text|border|decoration)-(primary|secondary|background|darkBackground|transBackground|textColor|textColor2)-(light|dark|pink|purple)/,
     },
   ]
 }

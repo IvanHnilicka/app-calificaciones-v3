@@ -7,6 +7,7 @@ import { DetalleMateriaComponent } from './detalle-materia/detalle-materia.compo
 import { EditarMateriaComponent } from './editar-materia/editar-materia.component';
 import { FooterComponent } from './footer/footer.component';
 import { TareasComponent } from './tareas/tareas.component';
+import { AgregarTareaComponent } from './agregar-tarea/agregar-tarea.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'detalle/:index', component: DetalleMateriaComponent },
   { path: 'editar/:index', component: EditarMateriaComponent },
   { path: 'tareas', component: TareasComponent },
+  { path: 'agregarTarea', component: AgregarTareaComponent },
   { path: '**', redirectTo: 'inicio' }
 ];
 
