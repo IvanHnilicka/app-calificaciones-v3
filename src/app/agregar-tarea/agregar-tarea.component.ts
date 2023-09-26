@@ -22,6 +22,7 @@ export class AgregarTareaComponent implements OnInit {
 
   fecha = new Date()
   tareas: Tarea[] = [];
+  mensajeError = '';
   nuevaTarea: Tarea = {
     nombre: '',
     fecha: new Date(),
@@ -31,8 +32,12 @@ export class AgregarTareaComponent implements OnInit {
   selectedTheme: string = 'light';
 
   guardarTarea(): void {
-    this.tareas.push(this.nuevaTarea);
-    this.ls.setTareas(this.tareas);
-    this.router.navigate(['/tareas']);
+    if(this.nuevaTarea.nombre.replaceAll(' ', "") === '') {
+      this.mensajeError = '*Error. Ingresa un nombre válido'
+    }else {
+      this.tareas.push(this.nuevaTarea);
+      this.ls.setTareas(this.tareas);
+      this.router.navigate(['/tareas']);
+    }
   }
 }

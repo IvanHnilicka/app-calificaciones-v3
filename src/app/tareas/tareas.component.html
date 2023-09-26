@@ -1,4 +1,4 @@
-<body class="pb-12 flex flex-col h-screen bg-background-{{selectedTheme}}">
+<body class="h-screen pb-16 flex flex-col bg-background-{{selectedTheme}} overflow-y-scroll">
     <!-- Header -->
     <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center justify-between bg-primary-{{selectedTheme}} sm:h-20">
         <h1 class="w-full px-6 text-white font-bold text-2xl truncate sm:text-3xl md:mx-2 lg:text-center lg:mx-0 lg:px-0">
@@ -10,37 +10,69 @@
         </button>
     </header>
 
-    <!-- Contenedor tareas de la semana -->
-    <div class="h-auto flex flex-col gap-2 px-4 py-2 pb-6 overflow-y-scroll animate-load" *ngIf="tareasSemana.length">
-        <h1 class="pl-3 text-lg font-semibold text-textColor-{{ selectedTheme }}">Próximos 7 días</h1>
-        <!-- Tarea -->
-        <div class="tarea h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareasSemana">    
-            <h1 id="header" class="w-7/12 truncate text-textColor-{{ selectedTheme }} md:text-2xl" [ngClass]="{'line-through decoration-red-600 decoration-solid decoration-2': tarea.completada}"> {{ tarea.nombre }} </h1>
-            <h1 class="w-auto text-textColor-{{ selectedTheme }} md:text-2xl"> {{ formatDate(tarea.fecha) }} </h1>
-            <input id="completado-{{tarea.nombre}}" name="completado-{{tarea.nombre}}" type="checkbox" class="absolute right-12 md:w-5 md:h-5 md:right-32" [(ngModel)]="tarea.completada" (click)="changeCompleted(tarea)">
-            <button class="h-full m-0 flex justify-center items-center absolute right-4 md:right-14 active:animate-shrink" *ngIf="tarea.completada" (click)="eliminarTarea(tarea)">
-                <img src="../../assets/trash-outline-red.svg" alt="Borrar" class="h-5 w-5 md:h-8 md:w-8">
-            </button>
+    <!-- Contenedor tareas -->
+    <div class="h-fit flex flex-col flex-1">
+        <!-- Contenedor tareas pasadas -->
+        <div class="h-auto flex flex-col gap-2 px-4 py-2 pb-6 animate-load" *ngIf="tareasPasadas.length">
+            <h1 class="pl-3 text-lg font-semibold text-red-700">Incompletas</h1>
+            <!-- Tarea -->
+            <div class="tarea h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareasPasadas">    
+                <h1 id="header" class="w-7/12 truncate text-textColor-{{ selectedTheme }} md:text-2xl" [ngClass]="{'line-through decoration-red-600 decoration-solid decoration-2': tarea.completada}"> {{ tarea.nombre }} </h1>
+                <h1 class="w-auto text-textColor-{{ selectedTheme }} md:text-2xl"> {{ formatDate(tarea.fecha) }} </h1>
+                <input id="completado-{{tarea.nombre}}" name="completado-{{tarea.nombre}}" type="checkbox" class="absolute right-12 md:w-5 md:h-5 md:right-32" [(ngModel)]="tarea.completada" (click)="changeCompleted(tarea)">
+                <button class="h-full m-0 flex justify-center items-center absolute right-4 md:right-14 active:animate-shrink" *ngIf="tarea.completada" (click)="eliminarTarea(tarea)">
+                    <img src="../../assets/trash-outline-red.svg" alt="Borrar" class="h-5 w-5 md:h-8 md:w-8">
+                </button>
+            </div>
+        </div>
+    
+        <!-- Contenedor tareas de hoy -->
+        <div class="h-auto flex flex-col gap-2 px-4 py-2 pb-6 animate-load" *ngIf="tareasHoy.length">
+            <h1 class="pl-3 text-lg font-semibold text-textColor-{{ selectedTheme }}">Para Hoy</h1>
+            <!-- Tarea -->
+            <div class="tarea h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareasHoy">    
+                <h1 id="header" class="w-7/12 truncate text-textColor-{{ selectedTheme }} md:text-2xl" [ngClass]="{'line-through decoration-red-600 decoration-solid decoration-2': tarea.completada}"> {{ tarea.nombre }} </h1>
+                <h1 class="w-auto text-textColor-{{ selectedTheme }} md:text-2xl"> Hoy </h1>
+                <input id="completado-{{tarea.nombre}}" name="completado-{{tarea.nombre}}" type="checkbox" class="absolute right-12 md:w-5 md:h-5 md:right-32" [(ngModel)]="tarea.completada" (click)="changeCompleted(tarea)">
+                <button class="h-full m-0 flex justify-center items-center absolute right-4 md:right-14 active:animate-shrink" *ngIf="tarea.completada" (click)="eliminarTarea(tarea)">
+                    <img src="../../assets/trash-outline-red.svg" alt="Borrar" class="h-5 w-5 md:h-8 md:w-8">
+                </button>
+            </div>
+        </div>
+    
+        <!-- Contenedor tareas de la semana -->
+        <div class="h-auto flex flex-col gap-2 px-4 py-2 pb-6 animate-load" *ngIf="tareasSemana.length">
+            <h1 class="pl-3 text-lg font-semibold text-textColor-{{ selectedTheme }}">Próximos 7 días</h1>
+            <!-- Tarea -->
+            <div class="tarea h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareasSemana">    
+                <h1 id="header" class="w-7/12 truncate text-textColor-{{ selectedTheme }} md:text-2xl" [ngClass]="{'line-through decoration-red-600 decoration-solid decoration-2': tarea.completada}"> {{ tarea.nombre }} </h1>
+                <h1 class="w-auto text-textColor-{{ selectedTheme }} md:text-2xl"> {{ formatDate(tarea.fecha) }} </h1>
+                <input id="completado-{{tarea.nombre}}" name="completado-{{tarea.nombre}}" type="checkbox" class="absolute right-12 md:w-5 md:h-5 md:right-32" [(ngModel)]="tarea.completada" (click)="changeCompleted(tarea)">
+                <button class="h-full m-0 flex justify-center items-center absolute right-4 md:right-14 active:animate-shrink" *ngIf="tarea.completada" (click)="eliminarTarea(tarea)">
+                    <img src="../../assets/trash-outline-red.svg" alt="Borrar" class="h-5 w-5 md:h-8 md:w-8">
+                </button>
+            </div>
+        </div>
+    
+        <!-- Contenedor tareas próximas -->
+        <div class="h-auto flex flex-col gap-2 px-4 py-2 pb-6 animate-load" *ngIf="tareasTarde.length">
+            <h1 class="pl-3 text-lg font-semibold text-textColor-{{ selectedTheme }}">Más tarde</h1>
+            <!-- Tarea -->
+            <div class="tarea h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareasTarde">
+                <h1 id="header" class="w-7/12 truncate text-textColor-{{ selectedTheme }} md:text-2xl" [ngClass]="{'line-through decoration-red-600 decoration-solid decoration-2': tarea.completada}"> {{ tarea.nombre }} </h1>
+                <h1 class="w-auto text-textColor-{{ selectedTheme }} md:text-2xl"> {{ formatDate(tarea.fecha) }} </h1>
+                <input id="completado-{{tarea.nombre}}" name="completado-{{tarea.nombre}}" type="checkbox" class="absolute right-12 md:w-5 md:h-5 md:right-32" [(ngModel)]="tarea.completada" (click)="changeCompleted(tarea)">
+                <button class="h-full m-0 flex justify-center items-center absolute right-4 md:right-14 active:animate-shrink" *ngIf="tarea.completada" (click)="eliminarTarea(tarea)">
+                    <img src="../../assets/trash-outline-red.svg" alt="Borrar" class="h-5 w-5 md:h-8 md:w-8">
+                </button>
+            </div>
+        </div>
+            
+        <!-- Mensaje arreglo tareas pendientes vacío -->
+        <div class="w-full my-auto text-center" *ngIf="!tareas.length">
+            <h1 class="px-4 text-xl text-textColor-{{selectedTheme}} opacity-25 font-bold lg:text-2xl">No tienes tareas. Para agregar una pulsa el boton de &plus; en la esquina superior derecha</h1>
         </div>
     </div>
-
-    <!-- Contenedor tareas próximas -->
-    <div class="h-auto flex flex-col gap-2 px-4 py-2 pb-6 overflow-y-scroll animate-load" *ngIf="tareasTarde.length">
-        <h1 class="pl-3 text-lg font-semibold text-textColor-{{ selectedTheme }}">Más tarde</h1>
-        <!-- Tarea -->
-        <div class="tarea h-fit w-full px-6 py-3 bg-transBackground-{{ selectedTheme }} rounded-full relative flex items-center gap-4 shadow-lg md:px-10 md:py-6" *ngFor="let tarea of tareasTarde">
-            <h1 id="header" class="w-7/12 truncate text-textColor-{{ selectedTheme }} md:text-2xl" [ngClass]="{'line-through decoration-red-600 decoration-solid decoration-2': tarea.completada}"> {{ tarea.nombre }} </h1>
-            <h1 class="w-auto text-textColor-{{ selectedTheme }} md:text-2xl"> {{ formatDate(tarea.fecha) }} </h1>
-            <input id="completado-{{tarea.nombre}}" name="completado-{{tarea.nombre}}" type="checkbox" class="absolute right-12 md:w-5 md:h-5 md:right-32" [(ngModel)]="tarea.completada" (click)="changeCompleted(tarea)">
-            <button class="h-full m-0 flex justify-center items-center absolute right-4 md:right-14 active:animate-shrink" *ngIf="tarea.completada" (click)="eliminarTarea(tarea)">
-                <img src="../../assets/trash-outline-red.svg" alt="Borrar" class="h-5 w-5 md:h-8 md:w-8">
-            </button>
-        </div>
-    </div>
-        
-    <!-- Mensaje arreglo tareas pendientes vacío -->
-    <div class="w-full my-auto text-center" *ngIf="!tareas.length">
-        <h1 class="px-4 text-xl text-textColor-{{selectedTheme}} opacity-25 font-bold lg:text-2xl">No tienes tareas. Para agregar una pulsa el boton de &plus; en la esquina superior derecha</h1>
-    </div>
+    
 </body>
 <app-footer></app-footer>

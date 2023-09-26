@@ -36,12 +36,24 @@ export class AjustesComponent implements OnInit{
   }
 
   selectedTheme:string = 'light';
-  modalConfirmacion: boolean = false;
-  modalEliminadas: boolean = false;
+  modalConfirmacionMaterias: boolean = false;
+  modalConfirmacionTareas: boolean = false;
+  modalMateriasEliminadas: boolean = false;
+  modalTareasEliminadas: boolean = false;
 
+  // Función para borrar todas las materias del almacenamiento local
   borrarMaterias(): void{
     try{
       this.ls.setMaterias([]);
+    }catch(error){
+      console.log('Error. ', error);      
+    }
+  }
+  
+  // Función para borrar todas las tareas del almacenamiento local
+  borrarTareas(): void{
+    try{
+      this.ls.setTareas([]);
     }catch(error){
       console.log('Error. ', error);      
     }

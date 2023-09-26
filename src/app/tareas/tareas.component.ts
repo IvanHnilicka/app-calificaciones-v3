@@ -19,9 +19,13 @@ export class TareasComponent implements OnInit {
     // Separa las tareas cercanas por fecha de las lejanas
     this.tareas.forEach(tarea => {
       tarea.fecha = new Date(tarea.fecha);
-      if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 *24) < 7){
+      if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < -1){ 
+        this.tareasPasadas.push(tarea);
+      } else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 0){       
+        this.tareasHoy.push(tarea);
+      } else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 7){
         this.tareasSemana.push(tarea);
-      }else{
+      } else{
         this.tareasTarde.push(tarea);
       }
     })
@@ -29,13 +33,42 @@ export class TareasComponent implements OnInit {
     // Ordena las tareas por fecha
     this.tareasSemana.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
     this.tareasTarde.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
+    this.tareasHoy.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
+    this.tareasPasadas.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
   }
 
   textDecorationColor: string = '#bfbfbf';
   selectedTheme: string = 'light';
-  tareas: Tarea[] = []
-  tareasSemana: Tarea[] = []
-  tareasTarde: Tarea[] = []
+  tareas: Tarea[] = [];
+  tareasPasadas: Tarea[] = []
+  tareasHoy: Tarea[] = [];
+  tareasSemana: Tarea[] = [];
+  tareasTarde: Tarea[] = [];
+
+  dias: any = {
+    Mon: 'Lun',
+    Tue: 'Mar',
+    Wed: 'Mie',
+    Thu: 'Jue',
+    Fri: 'Vie',
+    Sat: 'Sab',
+    Sun: 'Dom'
+  }
+
+  meses: any = {
+    Jan: 'Ene',
+    Feb: 'Feb',
+    Mar: 'Mar',
+    Apr: 'Abr',
+    May: 'May',
+    Jun: 'Jun',
+    Jul: 'Jul',
+    Aug: 'Ago',
+    Sep: 'Sep',
+    Oct: 'Oct',
+    Nov: 'Nov',
+    Dec: 'Dic'
+  }
   
 
   // Formatea la fecha que se muestra al usuario
@@ -43,10 +76,12 @@ export class TareasComponent implements OnInit {
     let fechaActual = new Date();  
     let datosFecha = fecha.toUTCString().split(' ');
     
-    if((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 *24) < 7){
-      return datosFecha[0].replace(',', '');
+    if((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 *24) < -1){
+      return this.meses[datosFecha[2]] + ' ' + datosFecha[1];
+    }else if((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 *24) < 7){
+      return this.dias[datosFecha[0].replace(',', '')] + ' ' + datosFecha[1];
     }else {      
-      return datosFecha[2] + ' ' + datosFecha[1];
+      return this.meses[datosFecha[2]] + ' ' + datosFecha[1];
     }
   }
 
@@ -64,6 +99,8 @@ export class TareasComponent implements OnInit {
     this.tareas.splice(index, 1);
     this.tareasSemana = [];
     this.tareasTarde = [];
+    this.tareasHoy = []
+    this.tareasPasadas = [];
     this.ls.setTareas(this.tareas); 
     this.ngOnInit()
   }

@@ -1,45 +1,44 @@
 <body class="pb-12 flex flex-col h-screen bg-background-{{selectedTheme}} overflow-y-scroll">
     <header class="sticky z-10 top-0 h-16 m-0 flex flex-none items-center bg-primary-{{selectedTheme}} sm:h-20">
-        <!-- <div class="flex mx-2 md:mx-8">
-            <button class="h-8 w-8 mx-2 flex items-center justify-center rounded-full text-2xl text-white sm:h-10 sm:w-10 active:animate-shrink" routerLink="/inicio">
-                <img src="../../assets/chevron-back-outline.svg" alt="Agregar" class="h-3/4 w-3/4">
-            </button>
-        </div> -->
-
         <h1 class="w-full px-6 text-white font-bold text-2xl truncate sm:text-3xl md:mx-2 lg:text-center lg:mx-0 lg:px-0">
             Configuracion
         </h1>
-
     </header>
 
+
     <!-- Contenedor para menu selector de temas -->
-    <div class="p-4 mx-2 flex items-center md:mx-4">
-        <h1 class="mr-2 text-xl text-textColor-{{selectedTheme}} lg:text-3xl">Tema: </h1>
+    <div class="h-screen p-4 mx-2 flex md:py-8 md:mx-4 animate-load">
+        <h1 class="h-fit mr-2 text-xl text-textColor-{{selectedTheme}} lg:text-3xl">Tema: </h1>
 
         <!-- Opciones para temas -->
-        <div class="opcion w-1/4 flex justify-center" tema="light">
+        <div class="opcion h-fit w-1/4 flex justify-center" tema="light">
             <div class="w-6 h-6 bg-primary-light rounded-full sm:w-8 sm:h-8"></div>
         </div>
-        <div class="opcion w-1/4 flex justify-center" tema="dark">
+        <div class="opcion h-fit w-1/4 flex justify-center" tema="dark">
             <div class="w-6 h-6 bg-primary-dark rounded-full sm:w-8 sm:h-8"></div>
         </div>
-        <div class="opcion w-1/4 flex justify-center" tema="pink">
+        <div class="opcion h-fit w-1/4 flex justify-center" tema="pink">
             <div class="w-6 h-6 bg-primary-pink rounded-full sm:w-8 sm:h-8"></div>
         </div>
-        <div class="opcion w-1/4 flex justify-center" tema="purple">
+        <div class="opcion h-fit w-1/4 flex justify-center" tema="purple">
             <div class="w-6 h-6 bg-primary-purple rounded-full sm:w-8 sm:h-8"></div>
         </div>
     </div>
 
-    <div class="flex h-full justify-center">
-        <button class="h-10 w-52 max-w-2xl mx-4 my-10 text-xl text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full self-end lg:h-16 lg:w-64 lg:text-3xl active:animate-shrink" (click)="modalConfirmacion = true">
+
+    <!-- Contenedor de botones -->
+    <div class="h-full mb-8 flex flex-1 flex-col gap-3 justify-center animate-load sm:flex-row sm:gap-0">
+        <button class="h-10 w-2/3 max-w-xl mx-auto text-xl text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full self-end sm:w-1/2 sm:mx-4 md:h-16 md:text-3xl  active:animate-shrink" (click)="modalConfirmacionTareas = true">
+            Borrar tareas
+        </button>
+        <button class="h-10 w-2/3 max-w-xl mx-auto text-xl text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full self-end sm:w-1/2 sm:mx-4 md:h-16 md:text-3xl  active:animate-shrink" (click)="modalConfirmacionMaterias = true">
             Borrar materias
         </button>
     </div>
 
 
-    <!-- Modal confirmar eliminación -->
-    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalConfirmacion">
+    <!-- Modal confirmar eliminación de materias -->
+    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalConfirmacionMaterias">
         <!-- Contenido modal -->
         <div class="w-fit h-fit mx-4 px-6 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
             <h1 class="w-fit text-white text-xl lg:text-2xl">
@@ -50,11 +49,11 @@
                 *Los datos no podran ser recuperados
             </h1>
 
-            <button class="w-24 px-3 py-1 mx-2 text-sm text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="borrarMaterias(); modalConfirmacion = false; modalEliminadas = true;">
+            <button class="w-24 px-3 py-1 mx-2 text-sm text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="borrarMaterias(); modalConfirmacionMaterias = false; modalMateriasEliminadas = true;">
                 Confirmar
             </button>
 
-            <button class="w-24 px-3 py-1 mx-2 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="modalConfirmacion = false">
+            <button class="w-24 px-3 py-1 mx-2 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="modalConfirmacionMaterias = false">
                 Cancelar
             </button>
     	</div>
@@ -62,7 +61,7 @@
 
 
     <!-- Modal materias eliminadas -->
-    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalEliminadas">
+    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalMateriasEliminadas">
         <!-- Contenido modal -->
         <div class="w-fit h-fit mx-4 px-8 py-4 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
             <h1 class="w-fit mb-6 text-white text-xl lg:text-2xl">
@@ -74,7 +73,46 @@
             </button>
         </div>
     </div>
+    
+    
+    <!-- Modal confirmar eliminación de tareas -->
+    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalConfirmacionTareas">
+        <!-- Contenido modal -->
+        <div class="w-fit h-fit mx-4 px-6 py-3 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
+            <h1 class="w-fit text-white text-xl lg:text-2xl">
+                ¿Deseas eliminar todas las tareas?
+            </h1>
+
+            <h1 class="py-4 text-sm text-white font-semibold lg:text-md">
+                *Los datos no podran ser recuperados
+            </h1>
+
+            <button class="w-24 px-3 py-1 mx-2 text-sm text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="borrarTareas(); modalConfirmacionTareas = false; modalTareasEliminadas = true;">
+                Confirmar
+            </button>
+
+            <button class="w-24 px-3 py-1 mx-2 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" (click)="modalConfirmacionTareas = false">
+                Cancelar
+            </button>
+    	</div>
+    </div>
+
+
+    <!-- Modal tareas eliminadas -->
+    <div class="absolute left-0 top-0 h-full w-screen bg-black/50 flex justify-center items-center" *ngIf="modalTareasEliminadas">
+        <!-- Contenido modal -->
+        <div class="w-fit h-fit mx-4 px-8 py-4 rounded-2xl text-center bg-primary-{{selectedTheme}} opacity-100 shadow-2xl animate-float lg:px-12 lg:py-8 lg:pb-4">
+            <h1 class="w-fit mb-6 text-white text-xl lg:text-2xl">
+                Las tareas han sido eliminadas
+            </h1>
+
+            <button class="w-24 px-3 py-1 bg-secondary-{{selectedTheme}} rounded-full text-white text-sm lg:text-md lg:px-4 lg:py-2 active:animate-shrink" routerLink="/tareas">
+                Regresar
+            </button>
+        </div>
+    </div>
 </body>
+
 
 <!-- Footer -->
 <footer class="h-16 w-screen absolute bottom-0 flex items-center bg-primary-{{selectedTheme}} sm:h-18">
