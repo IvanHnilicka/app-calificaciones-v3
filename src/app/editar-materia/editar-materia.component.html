@@ -26,22 +26,28 @@
             <label for="nombre-evaluacion-{{i}}" class="mr-4 w-fit text-textColor-{{selectedTheme}} sm:text-xl sm:mr-3">Evaluacion: </label>
             <input id="nombre-evaluacion-{{i}}" type="text" class="w-full mr-1 px-3 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:text-xl lg:mr-4" placeholder="Ej. Examen" [(ngModel)]="evaluacion.nombre" (change)="mensajeError = ''">
             <label for="valor-evaluacion-{{i}}" class="text-textColor-{{selectedTheme}} mx-2 sm:text-xl">Valor: </label>
-            <input id="valor-evaluacion-{{i}}" type="number" class="w-12 pl-2 outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-14 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor" (change)="mensajeError = ''">
+            <input id="valor-evaluacion-{{i}}" type="number" class="w-12 text-center outline-none border border-solid border-primary-{{selectedTheme}} rounded-full sm:h-10 sm:w-16 sm:text-xl lg:w-24" placeholder="%" [(ngModel)]="evaluacion.valor" (focus)="valorAnterior = datosMateria.evaluaciones[i].valor" (change)="mensajeError = ''; sumarTotal(i)">
 
             <button class="w-16 ml-2 rounded-full flex items-center justify-center self-center active:animate-shrink sm:w-12">
                 <img src="../../assets/cross-outline.svg" alt="Borrar" *ngIf="i > 0" (click)="eliminarEvaluacion(i)">
             </button>
         </div>
 
+        <!-- Suma de puntos -->
+        <div class="w-full pr-7 flex justify-between sm:pr-9 lg:pr-12">
+            <p class="text-lg semibold sm:text-2xl">Total</p>
+            <p class="w-12 text-lg text-center text-primary-{{ selectedTheme }} semibold sm:w-14 sm:text-2xl lg:w-24">{{ sumaPuntos }}</p>
+        </div>
+
         <!-- Botones -->
-        <div class="sm:flex sm:flex-row sm:justify-center lg:flex lg:flex-col lg:items-center">
-            <button class="w-full h-10 mt-2 text-white font-semibold bg-primary-{{selectedTheme}} rounded-full sm:w-1/2 sm:mx-2 sm:text-lg lg:w-1/3 lg:text-xl active:animate-shrink" (click)="agregarEvaluacion()">
+        <div class="flex gap-1 pt-2 sm:flex-row sm:justify-center lg:flex-col lg:items-center">
+            <button class="w-full h-10 mt-2 text-white font-semibold bg-primary-{{selectedTheme}} rounded-full focus:outline-none ring-transparent sm:w-1/2 sm:mx-2 sm:text-lg lg:w-1/3 lg:text-xl active:animate-shrink" (click)="agregarEvaluacion()">
                 Agregar evaluacion
             </button>
-            <button class="w-full h-10 mt-2 text-white font-semibold bg-primary-{{selectedTheme}} rounded-full sm:w-1/2 sm:mx-2 sm:text-lg lg:w-1/3 lg:text-xl active:animate-shrink" (click)="guardarNuevaMateria()">
+            <button class="w-full h-10 my-2 text-white font-semibold bg-primary-{{selectedTheme}} rounded-full outline-none sm:w-1/2 sm:mx-2 sm:text-lg lg:w-1/3 lg:text-xl active:animate-shrink" (click)="guardarNuevaMateria()">
                 Guardar
             </button>
-        </div>        
+        </div> 
 
         
         <!-- Mensaje error en input -->

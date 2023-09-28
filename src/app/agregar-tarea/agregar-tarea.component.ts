@@ -22,7 +22,7 @@ export class AgregarTareaComponent implements OnInit {
 
   tareas: Tarea[] = [];
   mensajeError = '';
-  fechaTarea = '';
+  fechaTarea = '';  // Guardamos la fecha del input en una variable porque el código la toma como string
   nuevaTarea: Tarea = {
     nombre: '',
     fecha: new Date(),
@@ -35,11 +35,13 @@ export class AgregarTareaComponent implements OnInit {
     if(this.nuevaTarea.nombre.replaceAll(' ', "") === '') {
       this.mensajeError = '*Error. Ingresa un nombre válido'
     }else {
+      // Si se seleccionó una fecha dentro del input obtenemos los datos de la variable y los asignamos a la fecha de la nueva tarea
       if(this.fechaTarea){
         let datosFecha = this.fechaTarea.split('-');      
         this.nuevaTarea.fecha.setFullYear(parseInt(datosFecha[0]), parseInt(datosFecha[1]) - 1, parseInt(datosFecha[2]));
       }
       
+      // Asignamos la hora en 0 para considerarla desde que inicia el día
       this.nuevaTarea.fecha.setHours(0);
       this.nuevaTarea.fecha.setMinutes(0);
       this.nuevaTarea.fecha.setSeconds(0);

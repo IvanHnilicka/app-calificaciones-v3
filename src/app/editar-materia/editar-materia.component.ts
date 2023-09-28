@@ -52,6 +52,8 @@ export class EditarMateriaComponent implements OnInit {
   materiaGuardada: boolean = false;
   mensajeError: string = '';
   selectedTheme: string = 'light';
+  sumaPuntos: number = 100;
+  valorAnterior = 0;
 
   agregarEvaluacion(): void {
     let evaluacion: Evaluacion = {
@@ -63,7 +65,19 @@ export class EditarMateriaComponent implements OnInit {
     this.datosMateria.evaluaciones.push(evaluacion);
   }
 
+  // Actualiza el total mostrado
+  sumarTotal(index: number): void {
+    if(this.datosMateria.evaluaciones[index].valor <= 0 || this.datosMateria.evaluaciones[index].valor > 100){
+      this.mensajeError = '*Error. Ingrese un valor entre 1 y 100';
+      this.datosMateria.evaluaciones[index].valor = 0;
+    }
+    this.sumaPuntos -= this.valorAnterior;
+    this.sumaPuntos += this.datosMateria.evaluaciones[index].valor;
+    this.valorAnterior = 0;
+  }
+
   eliminarEvaluacion(indiceEvaluacion: number): void {
+    this.sumaPuntos -= this.datosMateria.evaluaciones[indiceEvaluacion].valor;
     this.datosMateria.evaluaciones.splice(indiceEvaluacion, 1);
   }
 
@@ -75,7 +89,6 @@ export class EditarMateriaComponent implements OnInit {
     }
     
     let evaluaciones: Evaluacion[] = this.datosMateria.evaluaciones
-    let suma: number = 0;
     for(let i = 0; i < evaluaciones.length; i++){
       if(!this.datosMateria.nombre.replaceAll(' ', '')){
         this.materiaGuardada = false;
@@ -88,19 +101,11 @@ export class EditarMateriaComponent implements OnInit {
         this.mensajeError = '*Error. Ingrese un nombre en la evaluacion ' + (i + 1);
         return;
       }
-
-      if(evaluaciones[i].valor <= 0){
-        this.materiaGuardada = false;
-        this.mensajeError = '*Error. Valor no puede ser ' + evaluaciones[i].valor + ' en ' + evaluaciones[i].nombre;
-        return;
-      }
-
-      suma += evaluaciones[i].valor;
     }
 
-    if(suma != 100){
+    if(this.sumaPuntos != 100){
       this.materiaGuardada = false;
-      this.mensajeError = '*Error. Verifique que la suma de valores sea de 100%';
+      this.mensajeError = '*Error. Total debe ser 100';
       return    
     }
 

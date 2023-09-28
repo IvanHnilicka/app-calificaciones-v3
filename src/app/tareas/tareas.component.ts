@@ -16,16 +16,15 @@ export class TareasComponent implements OnInit {
     this.selectedTheme = this.theme.getCurrentTheme();
     this.tareas = this.ls.getTareas();
     
-    // Separa las tareas por secciones según la fecha
     let fechaActual = new Date();
     fechaActual.setHours(0);
     fechaActual.setMinutes(0);
     fechaActual.setSeconds(0);
-
     
     this.tareas.forEach(tarea => {
       tarea.fecha = new Date(tarea.fecha);  
       
+      // Obtiene la diferencia en dias de la tarea con la fecha actual para clasificarlas
       let diferencia = Math.round((tarea.fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 * 24));
       if(diferencia < 0){ 
         this.tareasPasadas.push(tarea);
@@ -41,14 +40,12 @@ export class TareasComponent implements OnInit {
       }
     })
 
-    // Ordena las tareas por fecha
+    // Ordena las tareas de cada clasificación por fecha
     this.tareasSemana.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
     this.tareasTarde.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
-    this.tareasHoy.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
     this.tareasPasadas.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
   }
 
-  textDecorationColor: string = '#bfbfbf';
   selectedTheme: string = 'light';
   tareas: Tarea[] = [];
   tareasPasadas: Tarea[] = []
@@ -56,6 +53,7 @@ export class TareasComponent implements OnInit {
   tareasSemana: Tarea[] = [];
   tareasTarde: Tarea[] = [];
 
+  // Objetos utilizados para la traducción a español de las fechas
   dias: any = {
     Mon: 'Lun',
     Tue: 'Mar',
@@ -82,17 +80,17 @@ export class TareasComponent implements OnInit {
   }
   
 
-  // Formatea la fecha que se muestra al usuario
+  // Formatea la fecha que se muestra al usuario según los días que faltan para cada clasificación de tareas
   formatDate(fecha: Date): string {
     let fechaActual = new Date();
     fechaActual.setHours(0);
     fechaActual.setMinutes(0);
     fechaActual.setSeconds(0);
 
-    // Estructura de los datos: ['Fri', 'Nov', '03', '2023', '00:00:00', 'GMT-0600', '(hora', 'estándar', 'central)']
+    // Estructura de datosFecha: ['Fri', 'Nov', '03', '2023', '00:00:00', 'GMT-0600', '(hora', 'estándar', 'central)']
     let datosFecha = fecha.toString().split(' ');
-    let diferencia = Math.round((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 * 24));
 
+    let diferencia = Math.round((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 * 24));
     if(diferencia < 0){
       return this.meses[datosFecha[1]] + ' ' + datosFecha[2];
 
