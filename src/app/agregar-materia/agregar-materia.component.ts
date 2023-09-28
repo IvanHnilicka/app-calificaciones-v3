@@ -60,7 +60,7 @@ export class AgregarMateriaComponent implements OnInit{
   
   // Actualiza el total mostrado
   sumarTotal(index: number): void {
-    if(this.nuevaMateria.evaluaciones[index].valor <= 0 || this.nuevaMateria.evaluaciones[index].valor > 100){
+    if(this.nuevaMateria.evaluaciones[index].valor < 0 || this.nuevaMateria.evaluaciones[index].valor > 100){
       this.mensajeError = '*Error. Ingrese un valor entre 1 y 100';
       this.nuevaMateria.evaluaciones[index].valor = 0;
     }

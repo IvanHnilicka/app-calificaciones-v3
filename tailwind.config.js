@@ -10,13 +10,13 @@ module.exports = {
           light: '#7A96FF',
           dark: '#343434',
           pink: '#f0a8bf',
-          purple: '#a23bc4',
+          purple: '#9d59ba',
         },
         secondary: {
           light: '#99afff',
           dark: '#404040',
           pink: '#f5c5d4',
-          purple: '#be76d6',
+          purple: '#aa6fc3',
         },
         background: {
           light: '#FFFFFF',

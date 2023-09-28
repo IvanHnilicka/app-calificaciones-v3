@@ -67,7 +67,7 @@ export class EditarMateriaComponent implements OnInit {
 
   // Actualiza el total mostrado
   sumarTotal(index: number): void {
-    if(this.datosMateria.evaluaciones[index].valor <= 0 || this.datosMateria.evaluaciones[index].valor > 100){
+    if(this.datosMateria.evaluaciones[index].valor < 0 || this.datosMateria.evaluaciones[index].valor > 100){
       this.mensajeError = '*Error. Ingrese un valor entre 1 y 100';
       this.datosMateria.evaluaciones[index].valor = 0;
     }
