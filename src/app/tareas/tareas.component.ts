@@ -16,16 +16,27 @@ export class TareasComponent implements OnInit {
     this.selectedTheme = this.theme.getCurrentTheme();
     this.tareas = this.ls.getTareas();
     
-    // Separa las tareas cercanas por fecha de las lejanas
+    // Separa las tareas por secciones según la fecha
     this.tareas.forEach(tarea => {
       tarea.fecha = new Date(tarea.fecha);
+      tarea.fecha.setHours(0);
+      tarea.fecha.setMinutes(0);
+      tarea.fecha.setSeconds(0);
+
+      // < -1 si la fecha ya pasó
       if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < -1){ 
         this.tareasPasadas.push(tarea);
-      } else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 0){       
+      }
+      // < 0 si la fecha es la actual 
+      else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 0){       
         this.tareasHoy.push(tarea);
-      } else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 7){
+      } 
+      // < 7 si se encuentra dentro de los próximos 7 días
+      else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 7){
         this.tareasSemana.push(tarea);
-      } else{
+      } 
+      // si la fecha es de más de 7 días de diferencias
+      else{
         this.tareasTarde.push(tarea);
       }
     })
@@ -93,7 +104,7 @@ export class TareasComponent implements OnInit {
     this.ls.setTareas(this.tareas);
   }
 
-
+  // Elimina la tarea del almacenamiento local y recarga la página para refrescar los datos
   eliminarTarea(tarea: Tarea): void {
     let index = this.tareas.indexOf(tarea);
     this.tareas.splice(index, 1);

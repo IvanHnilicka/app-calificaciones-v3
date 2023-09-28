@@ -35,6 +35,7 @@ export class AgregarTareaComponent implements OnInit {
     if(this.nuevaTarea.nombre.replaceAll(' ', "") === '') {
       this.mensajeError = '*Error. Ingresa un nombre válido'
     }else {
+      console.log(this.nuevaTarea);      
       this.tareas.push(this.nuevaTarea);
       this.ls.setTareas(this.tareas);
       this.router.navigate(['/tareas']);
