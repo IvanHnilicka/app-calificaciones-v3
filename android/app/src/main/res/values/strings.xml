@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">¿Voy a reprobar?</string>
-    <string name="title_activity_main">¿Voy a reprobar?</string>
+    <string name="app_name">School Planner</string>
+    <string name="title_activity_main">School Planner</string>
     <string name="package_name">com.ivhn.calificaciones</string>
     <string name="custom_url_scheme">com.ivhn.calificaciones</string>
 </resources>
