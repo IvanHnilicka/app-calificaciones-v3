@@ -61,6 +61,7 @@ export class AgregarMateriaComponent implements OnInit{
   }
 
   guardarNuevaMateria(): void {
+    // Valida que la materia tenga un nombre válido
     if(!this.nuevaMateria.nombre.replaceAll(' ', '')){
       this.materiaGuardada = false;
       this.mensajeError = '*Error. Ingrese nombre de materia';

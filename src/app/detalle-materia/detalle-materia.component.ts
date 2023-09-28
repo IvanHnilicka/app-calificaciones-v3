@@ -25,12 +25,13 @@ export class DetalleMateriaComponent implements OnInit {
         this.index = params['index'];
       })
 
+      // Toma la materia correspondiente al indice obtenido si existe, sino vuelve al inicio
       if(this.materias[this.index]){
         this.datosMateria = this.materias[this.index];
       }else{
         this.router.navigate(['/inicio'], { replaceUrl: true });
       }
-
+      
     }catch(error){
       console.log('Error. ', error);      
     }
@@ -43,6 +44,7 @@ export class DetalleMateriaComponent implements OnInit {
 
   index: number = -1;
   materias: Materia[] = [];
+  materiasOrdenadas: Materia[] = [];
   materiaGuardada: boolean = true;
   mensajeError: string = '';
   selectedTheme: string = 'light';

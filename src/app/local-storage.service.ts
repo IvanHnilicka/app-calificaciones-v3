@@ -15,8 +15,9 @@ export class LocalStorageService {
 
   getMaterias() {
     let materias = localStorage.getItem('materias');
-    return materias?JSON.parse(materias):[];
+    return materias ? JSON.parse(materias) : [];
   }
+
 
   setTareas(tareas: Tarea[]) {
     localStorage.setItem('tareas', JSON.stringify(tareas));
@@ -25,6 +26,15 @@ export class LocalStorageService {
   getTareas() {
     let tareas = localStorage.getItem('tareas');
     return tareas?JSON.parse(tareas):[];
+  }
+  
+
+  setOrdenar(valor: boolean) {
+    localStorage.setItem('ordenarMaterias', JSON.stringify(valor));
+  }
+
+  getOrdenar() {
+    return JSON.parse(localStorage.getItem('ordenarMaterias') || 'false');
   }
 
 }

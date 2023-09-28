@@ -17,25 +17,32 @@ export class TareasComponent implements OnInit {
     this.tareas = this.ls.getTareas();
     
     // Separa las tareas por secciones según la fecha
+    let fechaActual = new Date();
+    fechaActual.setHours(0);
+    fechaActual.setMinutes(0);
+    fechaActual.setSeconds(0);
+    console.log("Fecha actual: ", fechaActual);
+
     this.tareas.forEach(tarea => {
       tarea.fecha = new Date(tarea.fecha);
       tarea.fecha.setHours(0);
       tarea.fecha.setMinutes(0);
       tarea.fecha.setSeconds(0);
 
-      // < -1 si la fecha ya pasó
-      if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < -1){ 
+      let diferencia = Math.ceil((tarea.fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 * 24));
+
+      console.log(tarea);
+      console.log(diferencia);     
+
+      if(diferencia < 0){ 
         this.tareasPasadas.push(tarea);
       }
-      // < 0 si la fecha es la actual 
-      else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 0){       
+      else if(diferencia === 0){       
         this.tareasHoy.push(tarea);
       } 
-      // < 7 si se encuentra dentro de los próximos 7 días
-      else if((tarea.fecha.getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 7){
+      else if(diferencia > 0 && diferencia < 7){
         this.tareasSemana.push(tarea);
-      } 
-      // si la fecha es de más de 7 días de diferencias
+      }
       else{
         this.tareasTarde.push(tarea);
       }

@@ -7,7 +7,7 @@
 
 
     <!-- Contenedor para menu selector de temas -->
-    <div class="h-screen p-4 mx-2 flex md:py-8 md:mx-4 animate-load">
+    <div class="h-fit p-4 mx-2 flex md:py-8 md:mx-4 animate-load">
         <h1 class="h-fit mr-2 text-xl text-textColor-{{selectedTheme}} lg:text-3xl">Tema: </h1>
 
         <!-- Opciones para temas -->
@@ -25,9 +25,14 @@
         </div>
     </div>
 
+    <!-- <div class="h-fit p-4 mx-2 flex justify-between items-center sm:mt-4 sm:justify-start md:py-8 md:mx-4 animate-load">
+        <label for="ordenar-materias" class="text-md text-textColor-{{selectedTheme}} sm:text-lg md:text-2xl">Ordenar materias alfabéticamente</label>
+        <input id="ordenar-materias" name="ordenar-materias" type="checkbox" class="h-full mt-1 sm:w-4 sm:mt-2 sm:ml-6" [(ngModel)]="ordenarMaterias" (change)="cambiarOrdenarMaterias()">
+    </div> -->
+
 
     <!-- Contenedor de botones -->
-    <div class="h-full mb-8 flex flex-1 flex-col gap-3 justify-center animate-load sm:flex-row sm:gap-0 sm:mb-10">
+    <div class="h-full mb-8 flex flex-1 flex-col gap-3 justify-end animate-load sm:flex-row sm:gap-0 sm:mb-10 sm:justify-center">
         <button class="h-10 w-2/3 max-w-xl mx-auto text-xl text-white font-bold bg-red-600 border border-solid border-red-600 rounded-full self-end sm:w-1/2 sm:mx-4 md:h-16 md:text-3xl  active:animate-shrink" (click)="modalConfirmacionTareas = true">
             Borrar tareas
         </button>

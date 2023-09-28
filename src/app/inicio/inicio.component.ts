@@ -15,6 +15,7 @@ export class InicioComponent implements OnInit {
     try{
       this.selectedTheme = this.theme.getCurrentTheme();
       this.materias = this.ls.getMaterias();
+      
     }catch(error){
       console.log('Error. ', error);
     }

@@ -33,6 +33,8 @@ export class AjustesComponent implements OnInit{
         this.theme.setTheme(this.selectedTheme);
       })
     });
+
+    this.ordenarMaterias = this.ls.getOrdenar();
   }
 
   selectedTheme:string = 'light';
@@ -40,6 +42,7 @@ export class AjustesComponent implements OnInit{
   modalConfirmacionTareas: boolean = false;
   modalMateriasEliminadas: boolean = false;
   modalTareasEliminadas: boolean = false;
+  ordenarMaterias: boolean = true;
 
   // Función para borrar todas las materias del almacenamiento local
   borrarMaterias(): void{
@@ -57,5 +60,9 @@ export class AjustesComponent implements OnInit{
     }catch(error){
       console.log('Error. ', error);      
     }
+  }
+
+  cambiarOrdenarMaterias(): void {
+    this.ls.setOrdenar(this.ordenarMaterias);
   }
 }
