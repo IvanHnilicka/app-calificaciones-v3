@@ -21,19 +21,12 @@ export class TareasComponent implements OnInit {
     fechaActual.setHours(0);
     fechaActual.setMinutes(0);
     fechaActual.setSeconds(0);
-    console.log("Fecha actual: ", fechaActual);
 
+    
     this.tareas.forEach(tarea => {
-      tarea.fecha = new Date(tarea.fecha);
-      tarea.fecha.setHours(0);
-      tarea.fecha.setMinutes(0);
-      tarea.fecha.setSeconds(0);
-
-      let diferencia = Math.ceil((tarea.fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 * 24));
-
-      console.log(tarea);
-      console.log(diferencia);     
-
+      tarea.fecha = new Date(tarea.fecha);  
+      
+      let diferencia = Math.round((tarea.fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 * 24));
       if(diferencia < 0){ 
         this.tareasPasadas.push(tarea);
       }
@@ -91,15 +84,23 @@ export class TareasComponent implements OnInit {
 
   // Formatea la fecha que se muestra al usuario
   formatDate(fecha: Date): string {
-    let fechaActual = new Date();  
-    let datosFecha = fecha.toUTCString().split(' ');
-    
-    if((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 *24) < -1){
-      return this.meses[datosFecha[2]] + ' ' + datosFecha[1];
-    }else if((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 *24) < 7){
-      return this.dias[datosFecha[0].replace(',', '')] + ' ' + datosFecha[1];
-    }else {      
-      return this.meses[datosFecha[2]] + ' ' + datosFecha[1];
+    let fechaActual = new Date();
+    fechaActual.setHours(0);
+    fechaActual.setMinutes(0);
+    fechaActual.setSeconds(0);
+
+    // Estructura de los datos: ['Fri', 'Nov', '03', '2023', '00:00:00', 'GMT-0600', '(hora', 'estándar', 'central)']
+    let datosFecha = fecha.toString().split(' ');
+    let diferencia = Math.round((fecha.getTime() - fechaActual.getTime()) / (1000 * 3600 * 24));
+
+    if(diferencia < 0){
+      return this.meses[datosFecha[1]] + ' ' + datosFecha[2];
+
+    }else if(diferencia > 0 && diferencia < 7){
+      return this.dias[datosFecha[0].replace(',', '')] + ' ' + datosFecha[2];
+
+    }else {
+      return this.meses[datosFecha[1]] + ' ' + datosFecha[2];
     }
   }
 

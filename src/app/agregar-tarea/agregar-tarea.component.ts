@@ -20,9 +20,9 @@ export class AgregarTareaComponent implements OnInit {
     inputNombre?.focus();
   }
 
-  fecha = new Date()
   tareas: Tarea[] = [];
   mensajeError = '';
+  fechaTarea = '';
   nuevaTarea: Tarea = {
     nombre: '',
     fecha: new Date(),
@@ -35,7 +35,15 @@ export class AgregarTareaComponent implements OnInit {
     if(this.nuevaTarea.nombre.replaceAll(' ', "") === '') {
       this.mensajeError = '*Error. Ingresa un nombre válido'
     }else {
-      console.log(this.nuevaTarea);      
+      if(this.fechaTarea){
+        let datosFecha = this.fechaTarea.split('-');      
+        this.nuevaTarea.fecha.setFullYear(parseInt(datosFecha[0]), parseInt(datosFecha[1]) - 1, parseInt(datosFecha[2]));
+      }
+      
+      this.nuevaTarea.fecha.setHours(0);
+      this.nuevaTarea.fecha.setMinutes(0);
+      this.nuevaTarea.fecha.setSeconds(0);
+      
       this.tareas.push(this.nuevaTarea);
       this.ls.setTareas(this.tareas);
       this.router.navigate(['/tareas']);
