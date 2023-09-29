@@ -10,19 +10,19 @@ module.exports = {
           light: '#7A96FF',
           dark: '#343434',
           pink: '#f0a8bf',
-          purple: '#9d59ba',
+          purple: '#944bb4',
         },
         secondary: {
           light: '#99afff',
           dark: '#404040',
           pink: '#f5c5d4',
-          purple: '#aa6fc3',
+          purple: '#b481ca',
         },
         background: {
-          light: '#FFFFFF',
+          light: '#f4f4f4',
           dark: '#1B1B1B',
-          pink: '#FFFFFF',
-          purple: '#FFFFFF'
+          pink: '#f4f4f4',
+          purple: '#f4f4f4'
         },
         darkBackground: {
           light: '#FFFFFF',
